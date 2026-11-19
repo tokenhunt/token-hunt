@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
-  "name": "JordanNewell",
+  "name": "tokenhunt",
   "owner": {
     "name": "Jordan Newell",
     "url": "https://jordannewell.com"

@@ -2,7 +2,7 @@
 
 > Catch secrets at chat time, not commit time.
 
-[![release](https://img.shields.io/badge/release-0.1.0-blue)](https://github.com/JordanNewell/token-hunt/releases)
+[![release](https://img.shields.io/badge/release-0.1.0-blue)](https://github.com/tokenhunt/token-hunt/releases)
 [![license](https://img.shields.io/badge/license-BUSL--1.1-green)](LICENSE)
 [![python](https://img.shields.io/badge/python-3.10+-blue)](https://www.python.org/)
 
@@ -21,7 +21,7 @@ token-hunt catches at chat time. **Zero cloud, zero telemetry, fail-closed by de
 **Pre-release (today):** not yet on PyPI or the Claude Code plugin marketplace. Install from source:
 
 ```bash
-git clone https://github.com/JordanNewell/token-hunt
+git clone https://github.com/tokenhunt/token-hunt
 cd token-hunt
 pip install -e .
 ```
@@ -30,7 +30,7 @@ pip install -e .
 
 ```bash
 pip install token-hunt                              # standalone CLI
-claude plugin install token-hunt@JordanNewell       # Claude Code plugin
+claude plugin install token-hunt@tokenhunt       # Claude Code plugin
 ```
 
 ## 60-second demo
@@ -121,7 +121,7 @@ Providers whose keys are bare `sk-` (DeepSeek, StepFun, Moonshot, SiliconFlow, P
 
 ## token-hunt vs pat-scanner
 
-[pat-scanner](https://github.com/JordanNewell/pat-scanner) is the one-command Claude Code plugin: one hook, 13 credential classes, regex matching. Install it and you're covered.
+[pat-scanner](https://github.com/tokenhunt/pat-scanner) is the one-command Claude Code plugin: one hook, 13 credential classes, regex matching. Install it and you're covered.
 
 token-hunt is the engine underneath: the Python package, the CLI (`scan / list / close / watch`), six hooks with block-and-rotate behavior, the allowlist, and the bash escape-hatch runtime detector — the class regex can't see. Use pat-scanner when you just want the guard. Use token-hunt when you want the full scanner and the rotation workflow.
 

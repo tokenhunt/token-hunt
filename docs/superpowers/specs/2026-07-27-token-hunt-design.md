@@ -276,7 +276,7 @@ ID    KIND             SOURCE              WHEN              ROTATE
 ## Repo structure
 
 ```
-token-hunt/                          github.com/JordanNewell/token-hunt
+token-hunt/                          github.com/tokenhunt/token-hunt
 ├── pyproject.toml                   MIT, @jordannewell/token-hunt
 ├── src/token_hunt/
 │   ├── __init__.py

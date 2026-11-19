@@ -5,7 +5,7 @@ Thanks for considering a contribution.
 ## Setup
 
 ```bash
-git clone https://github.com/JordanNewell/token-hunt
+git clone https://github.com/tokenhunt/token-hunt
 cd token-hunt
 pip install -e ".[dev]"
 pytest

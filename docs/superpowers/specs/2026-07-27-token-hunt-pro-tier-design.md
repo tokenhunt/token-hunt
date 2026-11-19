@@ -86,8 +86,8 @@ Prioritized by user value × ease of build:
 **License validation:** Offline-first. License key signed with ed25519 public key embedded in package. No phone-home. User installs once, works forever offline. Renewal check on `token-hunt-pro --update` (manual, never blocks).
 
 **Repo strategy:**
-- `JordanNewell/token-hunt` (public, MIT, this repo)
-- `JordanNewell/token-hunt-pro` (private, source-available to paying customers)
+- `tokenhunt/token-hunt` (public, MIT, this repo)
+- `tokenhunt/token-hunt-pro` (private, source-available to paying customers)
 
 Source-available not open-source — paying customers get read access to the Pro repo. Reduces piracy risk while preserving auditability.
 

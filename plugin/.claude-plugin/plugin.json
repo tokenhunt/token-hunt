@@ -7,8 +7,8 @@
     "name": "Jordan Newell",
     "url": "https://jordannewell.com"
   },
-  "homepage": "https://github.com/JordanNewell/token-hunt",
-  "repository": "https://github.com/JordanNewell/token-hunt",
+  "homepage": "https://github.com/tokenhunt/token-hunt",
+  "repository": "https://github.com/tokenhunt/token-hunt",
   "license": "BUSL-1.1",
   "keywords": ["security", "secrets", "leak-prevention", "claude-code", "hooks"],
   "categories": ["security", "developer-tools"]
