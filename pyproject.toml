@@ -38,7 +38,7 @@ token-hunt = "token_hunt.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/tokenhunt/token-hunt"
-Documentation = "https://github.com/tokenhunt/token-hunt#readme"
+Documentation = "https://tokenhunt.dev/docs"
 Issues = "https://github.com/tokenhunt/token-hunt/issues"
 
 [tool.hatch.build.targets.wheel]
