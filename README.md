@@ -5,6 +5,7 @@
 [![release](https://img.shields.io/badge/release-0.1.0-blue)](https://github.com/tokenhunt/token-hunt/releases)
 [![license](https://img.shields.io/badge/license-BUSL--1.1-green)](LICENSE)
 [![python](https://img.shields.io/badge/python-3.10+-blue)](https://www.python.org/)
+[![docs](https://img.shields.io/badge/docs-tokenhunt.dev%2Fdocs-FF5A1F)](https://tokenhunt.dev/docs)
 
 Hook-based secret scanner for **Claude Code**. Catches leaks when you paste, when your agent reads, and when your agent's tools return — not at commit time when it's already too late.
 
