@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 import pytest
 from click.testing import CliRunner
 
+import token_hunt
 from tests.fixtures import ZAI_KEY
 from token_hunt.cli import main
 
@@ -26,7 +27,7 @@ def test_help_works(runner):
 def test_version_flag(runner):
     result = runner.invoke(main, ["--version"])
     assert result.exit_code == 0
-    assert "0.1.0" in result.output
+    assert token_hunt.__version__ in result.output
 
 
 def test_scan_finds_zai_key_in_stdin(runner):
