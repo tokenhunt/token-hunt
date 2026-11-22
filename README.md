@@ -19,19 +19,17 @@ token-hunt catches at chat time. **Zero cloud, zero telemetry, fail-closed by de
 
 ## Install
 
-**Pre-release (today):** not yet on PyPI or the Claude Code plugin marketplace. Install from source:
+```bash
+pip install token-hunt                              # standalone CLI
+claude plugin install token-hunt@tokenhunt          # Claude Code plugin
+```
+
+Or from source:
 
 ```bash
 git clone https://github.com/tokenhunt/token-hunt
 cd token-hunt
 pip install -e .
-```
-
-**Post-v0.1.0 publication** (once tag is pushed and CI completes):
-
-```bash
-pip install token-hunt                              # standalone CLI
-claude plugin install token-hunt@tokenhunt       # Claude Code plugin
 ```
 
 ## 60-second demo
