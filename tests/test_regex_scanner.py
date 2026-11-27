@@ -115,3 +115,41 @@ def test_keyword_prefilter_skips_obvious_non_matches(rules, ctx):
     text = "the quick brown fox jumps over the lazy dog"
     matches = scan_regex(text, rules, ctx)
     assert matches == []
+
+
+def test_entropy_threshold_skips_low_entropy_match():
+    rule = Rule(id="ent-rule", regex=r"[a-z]{16}", entropy=3.0)
+    ctx = ScanContext(detection_point="UserPromptSubmit")
+    assert scan_regex("token=aaaaaaaaaaaaaaaa", [rule], ctx) == []
+
+
+def test_entropy_threshold_passes_high_entropy_match():
+    rule = Rule(id="ent-rule", regex=r"[A-Za-z0-9]{20}", entropy=3.0)
+    ctx = ScanContext(detection_point="UserPromptSubmit")
+    matches = scan_regex("aB3xK9mQ2vL7pR5tW0zY", [rule], ctx)
+    assert len(matches) == 1
+    assert matches[0].value == "aB3xK9mQ2vL7pR5tW0zY"
+
+
+def test_entropy_zero_disables_threshold():
+    rule = Rule(id="no-ent", regex=r"[a-z]{16}")
+    ctx = ScanContext(detection_point="UserPromptSubmit")
+    matches = scan_regex("token=aaaaaaaaaaaaaaaa", [rule], ctx)
+    assert len(matches) == 1
+
+
+def test_secret_group_and_entropy_combined():
+    rule = Rule(
+        id="combo-rule",
+        regex=r"token\s*=\s*([A-Za-z0-9]{16})",
+        secret_group=1,
+        entropy=3.0,
+    )
+    ctx = ScanContext(detection_point="UserPromptSubmit")
+    # high-entropy capture -> fires, value is the capture not the whole match
+    # (concatenated so the gitleaks pre-commit hook doesn't flag the fixture itself)
+    hi = scan_regex("token = " + "aB3xK9mQ2vL7pR5t", [rule], ctx)
+    assert len(hi) == 1
+    assert hi[0].value == "aB3xK9mQ2vL7pR5t"
+    # capture region low-entropy even though the whole match adds entropy -> skipped
+    assert scan_regex("token = aaaaaaaaaaaaaaaa", [rule], ctx) == []
