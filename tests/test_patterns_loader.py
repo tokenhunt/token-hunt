@@ -24,6 +24,31 @@ def test_zai_rule_present():
     assert "z.ai" in zai.rotate_url.lower() or "zai" in zai.rotate_url.lower()
 
 
+def test_secret_group_gitleaks_spelling(tmp_path):
+    toml = tmp_path / "rules.toml"
+    toml.write_text(
+        '[[rules]]\n'
+        'id = "grp"\n'
+        'regex = "token=([a-z0-9]+)"\n'
+        'secretGroup = 2\n'
+    )
+    from token_hunt.patterns_loader import load_rules_from_path
+    rules = load_rules_from_path(toml)
+    assert rules[0].secret_group == 2
+
+
+def test_secret_group_defaults_to_zero(tmp_path):
+    toml = tmp_path / "rules.toml"
+    toml.write_text(
+        '[[rules]]\n'
+        'id = "plain"\n'
+        'regex = "[a-z0-9]+"\n'
+    )
+    from token_hunt.patterns_loader import load_rules_from_path
+    rules = load_rules_from_path(toml)
+    assert rules[0].secret_group == 0
+
+
 def test_invalid_toml_raises(tmp_path):
     bad = tmp_path / "bad.toml"
     bad.write_text("not valid toml [[")

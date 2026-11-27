@@ -30,6 +30,7 @@ def load_rules_from_path(path: Path) -> list[Rule]:
             description=entry.get("description", ""),
             keywords=keywords,
             rotate_url=entry.get("rotate_url", ""),
+            secret_group=int(entry.get("secret_group", entry.get("secretGroup", 0)) or 0),
         ))
     return rules
 
