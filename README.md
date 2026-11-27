@@ -102,6 +102,17 @@ Per-repo opt-out:
 export TOKEN_HUNT_DISABLE=1
 ```
 
+## Pre-commit
+
+Scan staged changes at commit time instead of (or alongside) chat-time hooks:
+
+```bash
+cp -r hooks/ your-repo/ && cd your-repo
+git config core.hooksPath hooks
+```
+
+Finds `token-hunt` on PATH, scans the staged diff, and exits 1 on findings. Missing install = skip, not block. The hook is a bash script — Linux, macOS, or Git-Bash on Windows; plain cmd won't spawn it.
+
 ## Bypass
 
 Only the PreToolUse BLOCK hooks (Bash, Edit/Write) honor `TOKEN_HUNT_ALLOW`. The WARN hooks (UserPromptSubmit, PostToolUse:*) always fire — they don't block, so bypass is unnecessary.

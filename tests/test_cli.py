@@ -34,7 +34,9 @@ def test_version_flag(runner):
 def test_scan_finds_zai_key_in_stdin(runner):
     result = runner.invoke(main, ["scan", "--stdin", "--context", "UserPromptSubmit",
                                   "--format", "json"], input=f"key={ZAI_KEY}")
-    assert result.exit_code == 0
+    # behavior change (deliberate): json exits 1 on findings, matching text —
+    # both are human/diagnostic surfaces that signal findings; sarif exits 0
+    assert result.exit_code == 1
     data = json.loads(result.output)
     assert any(m["kind"] == "zai-api-key" for m in data["matches"])
 
@@ -47,7 +49,8 @@ def test_scan_clean_text_exits_zero(runner):
 
 def test_scan_text_format_includes_rotate_url(runner):
     result = runner.invoke(main, ["scan", "--stdin"], input=ZAI_KEY)
-    assert result.exit_code == 0
+    # behavior change (deliberate): findings now exit 1 so hooks can gate on it
+    assert result.exit_code == 1
     assert "z.ai" in result.output.lower() or "rotate" in result.output.lower()
 
 
@@ -55,7 +58,8 @@ def test_scan_file_path(runner, tmp_path):
     f = tmp_path / "secret.txt"
     f.write_text(f"key={ZAI_KEY}")
     result = runner.invoke(main, ["scan", str(f)])
-    assert result.exit_code == 0
+    # behavior change (deliberate): findings now exit 1 so hooks can gate on it
+    assert result.exit_code == 1
     assert "zai-api-key" in result.output
 
 
@@ -193,5 +197,23 @@ def test_scan_sarif_never_touches_store(runner, tmp_path, monkeypatch):
 
     # same leaking input in text format DOES hit the store (spy sanity check)
     result = runner.invoke(main, ["scan", "--stdin", "--format", "text"], input=f"key={ZAI_KEY}")
-    assert result.exit_code == 0
+    assert result.exit_code == 1  # behavior change (deliberate): findings exit 1
     assert len(appended) == 1
+
+
+def test_scan_text_exits_one_on_findings(runner):
+    result = runner.invoke(main, ["scan", "--stdin"], input=f"key={ZAI_KEY}")
+    assert result.exit_code == 1
+
+
+def test_scan_json_exits_one_on_findings(runner):
+    result = runner.invoke(main, ["scan", "--stdin", "--format", "json"], input=f"key={ZAI_KEY}")
+    assert result.exit_code == 1
+    assert json.loads(result.output)["count"] == 1
+
+
+def test_scan_sarif_exits_zero_even_with_matches(runner):
+    # SARIF is a CI pipeline artifact: code-scanning upload steps must not fail.
+    result = runner.invoke(main, ["scan", "--stdin", "--format", "sarif"], input=f"key={ZAI_KEY}")
+    assert result.exit_code == 0
+    assert json.loads(result.output)["runs"][0]["results"]

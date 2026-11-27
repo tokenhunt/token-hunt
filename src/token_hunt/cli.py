@@ -80,6 +80,12 @@ def scan(path, stdin, context, fmt, no_log):
                 if m.rotate_url:
                     click.echo(f"    rotate: {m.rotate_url}")
 
+    # text and json are human/diagnostic surfaces: findings signal failure so
+    # scripts and hooks can gate on the exit code. sarif returns above — it is
+    # a pipeline artifact for CI ingestion and must not fail the step.
+    if result.matches:
+        sys.exit(1)
+
 
 @main.command(name="list")
 @click.option("--all", "show_all", is_flag=True, help="Show closed leaks too.")
