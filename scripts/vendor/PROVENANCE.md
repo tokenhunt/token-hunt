@@ -15,7 +15,10 @@ attribution chain.
 
 ## Port policy
 
-One-shot conversion via `scripts/convert_gitleaks.py`: skip `path`-scoped and
-`entropy`-scoped rules (meaningless for token-hunt's transcript scans and global
-entropy core), prefix ids with `gitleaks-`, map `secretGroup` -> `secret_group`,
-omit `rotate_url`.
+One-shot conversion via `scripts/convert_gitleaks.py` (coordinator ruling
+2026-11-27): skip `path`-scoped rules (file-tree scoping is meaningless for
+transcript scans); port `entropy` rules WITH their per-rule Shannon thresholds
+(gitleaks' anti-FP mechanism, applied by token-hunt's `regex_scanner`); rewrite
+mid-pattern `(?i)` to scoped-group form and Go's `\z` anchor to Python's `\Z`;
+prefix ids with `gitleaks-`; map `secretGroup` -> `secret_group`; omit
+`rotate_url`.

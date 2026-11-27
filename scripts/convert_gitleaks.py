@@ -1,10 +1,16 @@
-"""Convert gitleaks.toml rules into token-hunt TOML (one-time corpus port).
+r"""Convert gitleaks.toml rules into token-hunt TOML (one-time corpus port).
 
-Port policy (design 2026-11-27):
+Port policy (design 2026-11-27, revised per coordinator ruling):
 - SKIP rules with `path` (file-tree scoping is meaningless for transcript scans)
-- SKIP rules with `entropy` (token-hunt's entropy core is global, not per-rule)
+- Port `entropy` rules WITH their thresholds (`entropy = <float>`; token-hunt's
+  regex_scanner applies the per-rule Shannon gate — this is gitleaks' anti-FP
+  mechanism and is preserved, not dropped)
 - `secretGroup` -> `secret_group`
 - `keywords` passthrough; empty -> omitted
+- mid-pattern `(?i)` rewritten to scoped-group form (`X(?i)Y` -> `X(?i:Y)`;
+  Python re only allows global flags at pattern start) and Go's `\z` anchor
+  rewritten to Python's `\Z` (identical strict end-of-string semantics; Python
+  re <3.14 rejects `\z`); counted as `regex-rewritten`, not skipped
 - ids prefixed `gitleaks-` to never collide with the 48 builtin ids
 - `rotate_url` omitted (unknown for ported rules; providers can be mapped later)
 
@@ -24,9 +30,40 @@ else:
 VENDOR = Path(__file__).parent / "vendor" / "gitleaks.toml"
 
 
+def _rewrite_mid_pattern_case_insensitive(regex: str) -> str:
+    """Rewrite mid-pattern `(?i)` into scoped groups: `X(?i)Y` -> `X(?i:Y)`.
+
+    gitleaks (Go/RE2) lets `(?i)` flip case sensitivity from its position to
+    the end; Python re rejects global flags anywhere but pattern start. Each
+    mid occurrence becomes an opening scoped group closed at pattern end
+    (nesting preserves RE2's from-here-on semantics)."""
+    out = regex
+    changed = True
+    while changed:
+        changed = False
+        idx = out.find("(?i)", 1)
+        if idx != -1:
+            out = out[:idx] + "(?i:" + out[idx + 4:] + ")"
+            changed = True
+    return out
+
+
+def _normalize_regex(regex: str) -> tuple[str, bool, bool]:
+    """Port a Go/RE2 regex to Python re. Returns (regex, had_mid_flag, had_z_anchor)."""
+    had_mid_flag = regex.find("(?i)", 1) != -1
+    if had_mid_flag:
+        regex = _rewrite_mid_pattern_case_insensitive(regex)
+    had_z_anchor = r"\z" in regex
+    if had_z_anchor:
+        regex = regex.replace(r"\z", r"\Z")
+    return regex, had_mid_flag, had_z_anchor
+
+
 def main() -> int:
     data = tomllib.loads(VENDOR.read_text(encoding="utf-8"))
-    ported, skipped = [], []
+    ported, skipped, rewritten = [], [], 0
+    entropy_gated = 0
+    rewrite_detail: list[tuple[str, bool, bool]] = []
     seen_ids: set[str] = set()
     dupe_count = 0
     for r in data.get("rules", []):
@@ -34,8 +71,6 @@ def main() -> int:
         reason = None
         if r.get("path"):
             reason = "path-scoped"
-        elif r.get("entropy"):
-            reason = "entropy-scoped"
         elif not r.get("regex"):
             reason = "no regex"
         if reason:
@@ -46,17 +81,24 @@ def main() -> int:
             skipped.append((rid, "duplicate id (kept first)"))
             continue
         seen_ids.add(rid)
-        regex = r["regex"]
+        regex, had_mid_flag, had_z_anchor = _normalize_regex(r["regex"])
+        if had_mid_flag or had_z_anchor:
+            rewritten += 1
+            rewrite_detail.append((rid, had_mid_flag, had_z_anchor))
         try:
             re.compile(regex)
         except re.error:
-            skipped.append((rid, "invalid regex under Python re"))
+            skipped.append((rid, "invalid regex under Python re (after rewrite)"))
             continue
         rule_lines = [
             f'id = "gitleaks-{rid}"',
             f'description = {r.get("description", rid)!r}',
             f"regex = '''{regex}'''",
         ]
+        entropy = r.get("entropy")
+        if entropy:
+            rule_lines.append(f"entropy = {float(entropy)}")
+            entropy_gated += 1
         kws = [k for k in r.get("keywords", []) if k]
         if kws:
             rule_lines.append("keywords = [" + ", ".join(f'"{k}"' for k in kws) + "]")
@@ -70,7 +112,18 @@ def main() -> int:
         "# edit the converter + regenerate.\n\n"
     )
     sys.stdout.write(header + "\n".join(ported))
-    print(f"ported: {len(ported)}  skipped: {len(skipped)}", file=sys.stderr)
+    print(
+        f"ported: {len(ported)}  skipped: {len(skipped)}  "
+        f"regex-rewritten: {rewritten}  entropy-gated: {entropy_gated}",
+        file=sys.stderr,
+    )
+    for rid, had_mid_flag, had_z_anchor in rewrite_detail:
+        kinds = []
+        if had_mid_flag:
+            kinds.append("(?i)->scoped-group")
+        if had_z_anchor:
+            kinds.append(r"\z->\Z")
+        print(f"  REWRITE {rid}: {'+'.join(kinds)}", file=sys.stderr)
     if dupe_count:
         print(f"  duplicate ids deduped: {dupe_count}", file=sys.stderr)
     for rid, why in skipped:
