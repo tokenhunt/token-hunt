@@ -11,6 +11,13 @@ def test_load_builtin_rules_returns_list():
     assert len(rules) == 48 + len(load_rules_from_path(ported))
 
 
+def test_corpus_acceptance_gate():
+    # the corpus is terminal at 265 (48 builtins + 217 ported); a floor of
+    # 260 catches a grossly truncated port file while tolerating nothing
+    rules = load_builtin_rules()
+    assert len(rules) >= 260, f"corpus acceptance gate: expected >= 260 rules, got {len(rules)}"
+
+
 def test_rules_have_required_fields():
     rules = load_builtin_rules()
     for rule in rules:
