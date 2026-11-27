@@ -19,6 +19,10 @@ Every emitted string literal is chunked so no contiguous secret-shaped literal
 appears in the source (the repo's own gitleaks pre-commit hook scans staged
 files; chunking puts quote characters between fragments).
 
+Sampler version: batch-2 weighted class draws, 2026-11-27. Wholesale fixture
+regeneration is expected whenever the sampler changes — regenerated tuples
+stay valid (verified through the scanner) but differ byte-wise.
+
 Keyword-gated rules get a realistic `<KEYWORD>_KEY=`-style prefix on BOTH
 positive and negative, so the negative fails on shape, not on pre-filter.
 Verification runs through the real scanner (token_hunt.regex_scanner), so
@@ -106,7 +110,7 @@ def _in_item_weight(op, av) -> int:
     # over the class — uniform item choice would make [\w-] 50% dashes and
     # sink entropy-gated rules below their thresholds
     if op is sre_constants.RANGE:
-        return min(max(av[1] - av[0] + 1, 1), 512)
+        return min(max(av[1] - av[0] + 1, 1), 512)  # cap keeps huge unicode ranges from dominating
     if op is sre_constants.CATEGORY:
         return len(_category_pool(av)) or 1
     return 1  # LITERAL and anything else

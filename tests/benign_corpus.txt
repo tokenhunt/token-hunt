@@ -305,3 +305,78 @@ hubspot_token = "$HUBSPOT_REF"
 huggingface hf_ tokens are 34 chars after the prefix; docs truncated
 hf_ + short placeholder in the model deploy notes
 api_org_ tokens are org-scoped huggingface tokens; docs prefix only
+
+# batch 3 probes: infracost through pypi
+infracost ico- keys are 26 chars; docs truncated
+infracost_api_key = "$INFRACOST_REF"
+intercom_key = "$INTERCOM_REF"
+intercom access tokens are 60-char base64url; docs show the prefix
+intra42 s-s4t2ud- secrets are 64 hex after the prefix; docs truncated
+intra42_client_secret = "$INTRA42_SECRET_REF"
+jfrog identity tokens are 73 chars; docs show the prefix only
+jfrog_api_key = "$JFROG_REF"
+artifactory identity tokens follow the same 73-char shape
+JWTs in transcripts are scanned whole; docs here show only decoded headers
+jwt payload fragment eyJzdWIiOiIxMjM0NTY3ODkw (no header, no signature)
+the zxlk base64-jwt form embeds ZXlK + tail; docs mention the prefix only
+kraken_token = "$KRAKEN_REF"
+kraken api keys are 80-90 char base64; docs truncated
+kucoin_token = "$KUCOIN_REF"
+kucoin access keys are 24 hex; docs prefix only
+launchdarkly_token = "$LAUNCHDARKLY_REF"
+linear_api_key = "$LINEAR_REF"
+linear lin_api_ keys are 40 chars after the prefix; docs truncated
+linkedin_client_id = "$LINKEDIN_ID_REF"
+linkedin secret placeholders live in the oauth app console
+lob live_ keys are 26 chars; test_ forms are dev-only
+lob_api_key = "$LOB_REF"
+lob pub keys test_pub_/live_pub_ are publishable by design
+looker_client_id = "$LOOKER_ID_REF"
+looker secret placeholders stay in the admin console
+mailchimp_key = "$MAILCHIMP_REF"
+mailchimp keys end in -usXX datacenter suffixes; docs truncated
+mailgun_token = "$MAILGUN_REF"
+mailgun private keys: key- + 32 hex; docs truncated
+mailgun signing keys and pub keys follow their own shapes
+mapbox_token = "$MAPBOX_REF"
+mapbox sk. tokens embed dots; docs show the prefix only
+mattermost_token = "$MATTERMOST_REF"
+maxmind license keys end in _mmk; docs show the suffix only
+maxmind_license = "$MAXMIND_REF"
+messagebird_token = "$MESSAGEBIRD_REF"
+messagebird live keys are 25 chars; test_ forms are dev-only
+teams incoming webhook URLs embed three uuid segments; never inline them
+teams_webhook = "$TEAMS_WEBHOOK_REF" (webhook.office.com URLs rotate on leak)
+netlify_token = "$NETLIFY_REF"
+netlify tokens are 40-46 chars; docs truncated
+new_relic_insert_key = "$NEWRELIC_INSERT_REF"
+new relic nrak_ user keys and nrjs- browser tokens are account-scoped
+new relic user api ids are numeric; docs mention the field only
+notion_token = "$NOTION_REF"
+notion ntn_ tokens: 11 digits + 35 chars; docs truncated
+npm_token = "$NPM_REF" (npm_ + 36 chars; docs truncated)
+nytimes_token = "$NYTIMES_REF"
+octopus_api_key = "$OCTOPUS_REF"
+octopus api- keys are 26 chars; docs truncated
+okta_token = "$OKTA_REF"
+okta 00-prefixed tokens are 42 chars total; docs truncated
+openai keys embed the T3BlbkFJ marker segment; docs show the prefix only
+openai_api_key = "$OPENAI_REF"
+sk- + 20 chars without the marker is a doc placeholder, not a key
+openshift sha256~ tokens are 43 chars after the prefix; docs truncated
+perplexity_key = "$PERPLEXITY_REF"
+perplexity pplx- keys are 48+ chars; docs truncated
+plaid_client_id = "$PLAID_ID_REF"
+plaid secret placeholders stay in the dashboard
+planetscale pscale_tkn_/pscale_oauth_/pscale_pw_ prefixes are org-scoped
+planetscale_token = "$PLANETSCALE_REF"
+postman_token = "$POSTMAN_REF"
+postman pmak- keys are 32 chars; docs truncated
+prefect pnu_ tokens are 36 chars; docs truncated
+prefect_token = "$PREFECT_REF"
+PEM private key blocks are the canonical multi-line detection case; transcripts rarely carry them whole
+privateai_token = "$PRIVATEAI_REF"
+pulumi pul- tokens are 40 chars; docs truncated
+pulumi_token = "$PULUMI_REF"
+pypi upload tokens start pypi-AgEIcHlwaS5vcmc; docs truncated
+pypi_token = "$PYPI_REF"

@@ -76,18 +76,12 @@ PATCHES: dict[str, list[tuple[str, str]]] = {
         (r"[\w$@.-]+", r"[\w@.-]+"),
         (r"[\w${}@.-]+", r"[\w@.-]+"),
     ],
-    # batch-2 FP: the loose [\w.=-]{10,150} value charset matched dotted
-    # env-var references (process.env.X, secrets.env) and bare keyword
-    # fragments (github_pat_ as an 11-char "value"). Dots excluded, minimum
-    # raised to 25, and secret_group=1 added so the entropy gate applies to
-    # the captured value instead of the keyword-laden whole match.
+    # batch-2 FP — rationale in PATCH_COMMENTS below
     "generic-api-key": [
         (r"[\w.=-]{10,150}", r"[\w=-]{25,150}"),
     ],
 }
 
-# TOML comment emitted above each patched block — documents the tightening
-# in the generated file and marks it as converter-carried.
 # Patch-imposed secret_group per upstream rule id: applied only when upstream
 # did not set one. generic-api-key's group 1 is the value charset, so the
 # scanner's entropy gate (and reported value) applies to the credential
@@ -96,6 +90,8 @@ PATCH_SECRET_GROUP: dict[str, int] = {
     "generic-api-key": 1,
 }
 
+# TOML comment emitted above each patched block — documents the tightening
+# in the generated file and marks it as converter-carried.
 PATCH_COMMENTS: dict[str, str] = {
     "aws-amazon-bedrock-api-key-short-lived": (
         "# [Y] one-char class: identical match semantics; patch carried by the\n"
@@ -208,8 +204,7 @@ def main() -> int:
             rewritten += 1
             rewrite_detail.append((rid, had_mid_flag, had_z_anchor))
         posix_normalized += posix_count
-        patched_ids = [pid for pid in PATCHES if pid == rid]
-        if patched_ids:
+        if rid in PATCHES:
             regex = _apply_patches(rid, regex)
             patched.append(rid)
         try:
@@ -266,6 +261,11 @@ def main() -> int:
         print(f"  duplicate ids deduped: {dupe_count}", file=sys.stderr)
     for rid, why in skipped:
         print(f"  SKIP {rid}: {why}", file=sys.stderr)
+    # a patch entry whose rule got skipped upstream (or renamed) would
+    # otherwise silently stop being applied — surface it loudly
+    for pid in PATCHES:
+        if pid not in patched:
+            print(f"  WARNING patch never applied: {pid} (rule skipped or renamed upstream?)", file=sys.stderr)
     return 0
 
 
