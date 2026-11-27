@@ -49,6 +49,31 @@ def test_secret_group_defaults_to_zero(tmp_path):
     assert rules[0].secret_group == 0
 
 
+def test_entropy_parsed_as_float(tmp_path):
+    toml = tmp_path / "rules.toml"
+    toml.write_text(
+        '[[rules]]\n'
+        'id = "ent"\n'
+        'regex = "[a-z0-9]{20}"\n'
+        'entropy = 3.5\n'
+    )
+    from token_hunt.patterns_loader import load_rules_from_path
+    rules = load_rules_from_path(toml)
+    assert rules[0].entropy == 3.5
+
+
+def test_entropy_defaults_to_zero(tmp_path):
+    toml = tmp_path / "rules.toml"
+    toml.write_text(
+        '[[rules]]\n'
+        'id = "plain"\n'
+        'regex = "[a-z0-9]+"\n'
+    )
+    from token_hunt.patterns_loader import load_rules_from_path
+    rules = load_rules_from_path(toml)
+    assert rules[0].entropy == 0
+
+
 def test_invalid_toml_raises(tmp_path):
     bad = tmp_path / "bad.toml"
     bad.write_text("not valid toml [[")

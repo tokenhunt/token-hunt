@@ -31,6 +31,7 @@ def load_rules_from_path(path: Path) -> list[Rule]:
             keywords=keywords,
             rotate_url=entry.get("rotate_url", ""),
             secret_group=int(entry.get("secret_group", entry.get("secretGroup", 0)) or 0),
+            entropy=float(entry.get("entropy", 0.0) or 0.0),
         ))
     return rules
 

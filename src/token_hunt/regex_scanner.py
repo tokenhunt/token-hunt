@@ -4,6 +4,7 @@ import hashlib
 import re
 from collections.abc import Iterable
 
+from token_hunt.entropy import shannon_entropy
 from token_hunt.types import Match, Rule, ScanContext
 
 
@@ -43,6 +44,8 @@ def scan_regex(text: str, rules: Iterable[Rule], ctx: ScanContext) -> list[Match
                         continue  # group index beyond pattern's capture groups
                     if not value:
                         continue  # group didn't participate in this match
+                if rule.entropy > 0 and shannon_entropy(value) < rule.entropy:
+                    continue  # below rule's entropy threshold (gitleaks-style gate)
 
                 matches.append(Match(
                     kind=rule.id,

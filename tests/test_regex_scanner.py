@@ -115,3 +115,24 @@ def test_keyword_prefilter_skips_obvious_non_matches(rules, ctx):
     text = "the quick brown fox jumps over the lazy dog"
     matches = scan_regex(text, rules, ctx)
     assert matches == []
+
+
+def test_entropy_threshold_skips_low_entropy_match():
+    rule = Rule(id="ent-rule", regex=r"[a-z]{16}", entropy=3.0)
+    ctx = ScanContext(detection_point="UserPromptSubmit")
+    assert scan_regex("token=aaaaaaaaaaaaaaaa", [rule], ctx) == []
+
+
+def test_entropy_threshold_passes_high_entropy_match():
+    rule = Rule(id="ent-rule", regex=r"[A-Za-z0-9]{20}", entropy=3.0)
+    ctx = ScanContext(detection_point="UserPromptSubmit")
+    matches = scan_regex("aB3xK9mQ2vL7pR5tW0zY", [rule], ctx)
+    assert len(matches) == 1
+    assert matches[0].value == "aB3xK9mQ2vL7pR5tW0zY"
+
+
+def test_entropy_zero_disables_threshold():
+    rule = Rule(id="no-ent", regex=r"[a-z]{16}")
+    ctx = ScanContext(detection_point="UserPromptSubmit")
+    matches = scan_regex("token=aaaaaaaaaaaaaaaa", [rule], ctx)
+    assert len(matches) == 1
