@@ -12,10 +12,10 @@ def test_load_builtin_rules_returns_list():
 
 
 def test_corpus_acceptance_gate():
-    # the full gitleaks port (217 rules) + 48 builtins must always load; if
-    # this dips below 200, a batch or the port file itself went missing
+    # the corpus is terminal at 265 (48 builtins + 217 ported); a floor of
+    # 260 catches a grossly truncated port file while tolerating nothing
     rules = load_builtin_rules()
-    assert len(rules) >= 200, f"corpus acceptance gate: expected >= 200 rules, got {len(rules)}"
+    assert len(rules) >= 260, f"corpus acceptance gate: expected >= 260 rules, got {len(rules)}"
 
 
 def test_rules_have_required_fields():
