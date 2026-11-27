@@ -75,10 +75,10 @@ def _rewrite_mid_pattern_case_insensitive(regex: str) -> str:
     return out
 
 
-def _normalize_regex(regex: str) -> tuple[str, bool, bool, int]:
+def _normalize_regex(regex: str) -> tuple[str, bool, bool, int, str | None]:
     """Port a Go/RE2 regex to Python re.
 
-    Returns (regex, had_mid_flag, had_z_anchor, posix_count)."""
+    Returns (regex, had_mid_flag, had_z_anchor, posix_count, unknown_posix)."""
     had_mid_flag = regex.find("(?i)", 1) != -1
     if had_mid_flag:
         regex = _rewrite_mid_pattern_case_insensitive(regex)
@@ -86,15 +86,22 @@ def _normalize_regex(regex: str) -> tuple[str, bool, bool, int]:
     if had_z_anchor:
         regex = regex.replace(r"\z", r"\Z")
     posix_count = 0
+    unknown_posix = None
+    for m in POSIX_RE.finditer(regex):
+        if m.group(1) not in POSIX_CLASSES:
+            unknown_posix = f"unknown posix class [:{m.group(1)}:]"
+            break
 
     def _sub(m: re.Match[str]) -> str:
         nonlocal posix_count
         posix_count += 1
         return POSIX_CLASSES[m.group(1)]
 
-    if POSIX_RE.search(regex):
+    if unknown_posix is None and POSIX_RE.search(regex):
+        # assumes [:name:] tokens only occur inside real character classes —
+        # zero counter-examples in this corpus (verified)
         regex = POSIX_RE.sub(_sub, regex)
-    return regex, had_mid_flag, had_z_anchor, posix_count
+    return regex, had_mid_flag, had_z_anchor, posix_count, unknown_posix
 
 
 def main() -> int:
@@ -120,7 +127,10 @@ def main() -> int:
             skipped.append((rid, "duplicate id (kept first)"))
             continue
         seen_ids.add(rid)
-        regex, had_mid_flag, had_z_anchor, posix_count = _normalize_regex(r["regex"])
+        regex, had_mid_flag, had_z_anchor, posix_count, unknown_posix = _normalize_regex(r["regex"])
+        if unknown_posix:
+            skipped.append((rid, unknown_posix))
+            continue
         if had_mid_flag or had_z_anchor:
             rewritten += 1
             rewrite_detail.append((rid, had_mid_flag, had_z_anchor))
