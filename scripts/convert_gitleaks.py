@@ -11,6 +11,11 @@ Port policy (design 2026-11-27, revised per coordinator ruling):
   Python re only allows global flags at pattern start) and Go's `\z` anchor
   rewritten to Python's `\Z` (identical strict end-of-string semantics; Python
   re <3.14 rejects `\z`); counted as `regex-rewritten`, not skipped
+- POSIX classes (`[:alnum:]` etc.) translated to explicit ASCII ranges inside
+  the enclosing brackets; counted as `posix-normalized`
+- the compile gate runs with FutureWarning as error, so Python's silent
+  "possible nested set" heuristics (e.g. untranslated POSIX classes) reject
+  the rule instead of porting a misparse
 - ids prefixed `gitleaks-` to never collide with the 48 builtin ids
 - `rotate_url` omitted (unknown for ported rules; providers can be mapped later)
 
@@ -20,6 +25,7 @@ from __future__ import annotations
 
 import re
 import sys
+import warnings
 from pathlib import Path
 
 if sys.version_info >= (3, 11):
@@ -29,6 +35,25 @@ else:
 
 VENDOR = Path(__file__).parent / "vendor" / "gitleaks.toml"
 
+# POSIX character classes -> explicit ASCII-range equivalents. The inner
+# `[:name:]` token is substituted, preserving the host class's brackets —
+# so standalone `[[:alnum:]]` -> `[0-9A-Za-z]` and embedded
+# `[[:digit:]_-]` -> `[0-9_-]` both translate correctly.
+POSIX_CLASSES = {
+    "alnum": "0-9A-Za-z",
+    "alpha": "A-Za-z",
+    "digit": "0-9",
+    "xdigit": "0-9A-Fa-f",
+    "upper": "A-Z",
+    "lower": "a-z",
+    "space": r" \t\n\v\f\r",
+    "blank": r" \t",
+    "punct": r"!-/:-@\[-`{-~",
+    "word": "0-9A-Za-z_",
+    "cntrl": r"\x00-\x1f\x7f",
+}
+POSIX_RE = re.compile(r"\[:([a-z]+):\]")
+
 
 def _rewrite_mid_pattern_case_insensitive(regex: str) -> str:
     """Rewrite mid-pattern `(?i)` into scoped groups: `X(?i)Y` -> `X(?i:Y)`.
@@ -36,9 +61,11 @@ def _rewrite_mid_pattern_case_insensitive(regex: str) -> str:
     gitleaks (Go/RE2) lets `(?i)` flip case sensitivity from its position to
     the end; Python re rejects global flags anywhere but pattern start. Each
     mid occurrence becomes an opening scoped group closed at pattern end
-    (nesting preserves RE2's from-here-on semantics)."""
+    (nesting preserves RE2's from-here-on semantics).
+    """
     out = regex
     changed = True
+    # safe only when nothing case-sensitive follows the flag's enclosing group; verified for this corpus
     while changed:
         changed = False
         idx = out.find("(?i)", 1)
@@ -48,21 +75,33 @@ def _rewrite_mid_pattern_case_insensitive(regex: str) -> str:
     return out
 
 
-def _normalize_regex(regex: str) -> tuple[str, bool, bool]:
-    """Port a Go/RE2 regex to Python re. Returns (regex, had_mid_flag, had_z_anchor)."""
+def _normalize_regex(regex: str) -> tuple[str, bool, bool, int]:
+    """Port a Go/RE2 regex to Python re.
+
+    Returns (regex, had_mid_flag, had_z_anchor, posix_count)."""
     had_mid_flag = regex.find("(?i)", 1) != -1
     if had_mid_flag:
         regex = _rewrite_mid_pattern_case_insensitive(regex)
     had_z_anchor = r"\z" in regex
     if had_z_anchor:
         regex = regex.replace(r"\z", r"\Z")
-    return regex, had_mid_flag, had_z_anchor
+    posix_count = 0
+
+    def _sub(m: re.Match[str]) -> str:
+        nonlocal posix_count
+        posix_count += 1
+        return POSIX_CLASSES[m.group(1)]
+
+    if POSIX_RE.search(regex):
+        regex = POSIX_RE.sub(_sub, regex)
+    return regex, had_mid_flag, had_z_anchor, posix_count
 
 
 def main() -> int:
     data = tomllib.loads(VENDOR.read_text(encoding="utf-8"))
     ported, skipped, rewritten = [], [], 0
     entropy_gated = 0
+    posix_normalized = 0
     rewrite_detail: list[tuple[str, bool, bool]] = []
     seen_ids: set[str] = set()
     dupe_count = 0
@@ -81,14 +120,20 @@ def main() -> int:
             skipped.append((rid, "duplicate id (kept first)"))
             continue
         seen_ids.add(rid)
-        regex, had_mid_flag, had_z_anchor = _normalize_regex(r["regex"])
+        regex, had_mid_flag, had_z_anchor, posix_count = _normalize_regex(r["regex"])
         if had_mid_flag or had_z_anchor:
             rewritten += 1
             rewrite_detail.append((rid, had_mid_flag, had_z_anchor))
+        posix_normalized += posix_count
         try:
-            re.compile(regex)
+            with warnings.catch_warnings():
+                warnings.simplefilter("error", FutureWarning)  # silent misparses (POSIX classes etc.) must not port
+                re.compile(regex)
         except re.error:
             skipped.append((rid, "invalid regex under Python re (after rewrite)"))
+            continue
+        except FutureWarning:
+            skipped.append((rid, "posix class or re2-ism (Python re warning)"))
             continue
         rule_lines = [
             f'id = "gitleaks-{rid}"',
@@ -114,7 +159,8 @@ def main() -> int:
     sys.stdout.write(header + "\n".join(ported))
     print(
         f"ported: {len(ported)}  skipped: {len(skipped)}  "
-        f"regex-rewritten: {rewritten}  entropy-gated: {entropy_gated}",
+        f"regex-rewritten: {rewritten}  entropy-gated: {entropy_gated}  "
+        f"posix-normalized: {posix_normalized}",
         file=sys.stderr,
     )
     for rid, had_mid_flag, had_z_anchor in rewrite_detail:
