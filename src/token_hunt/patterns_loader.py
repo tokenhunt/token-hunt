@@ -37,7 +37,11 @@ def load_rules_from_path(path: Path) -> list[Rule]:
 
 def load_builtin_rules() -> list[Rule]:
     """Load the builtin pattern set shipped with the package."""
-    return load_rules_from_path(BUILTIN_PATTERNS_DIR / "builtin.toml")
+    rules = load_rules_from_path(BUILTIN_PATTERNS_DIR / "builtin.toml")
+    ported = BUILTIN_PATTERNS_DIR / "gitleaks-port.toml"
+    if ported.is_file():
+        rules.extend(load_rules_from_path(ported))
+    return rules
 
 
 def load_user_rules(paths: Iterable[Path]) -> list[Rule]:

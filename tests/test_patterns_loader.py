@@ -55,3 +55,24 @@ def test_invalid_toml_raises(tmp_path):
     from token_hunt.patterns_loader import load_rules_from_path
     with pytest.raises(ValueError, match="invalid TOML"):
         load_rules_from_path(bad)
+
+
+def test_gitleaks_port_file_loads_if_present():
+    from token_hunt.patterns_loader import BUILTIN_PATTERNS_DIR, load_rules_from_path
+    ported = BUILTIN_PATTERNS_DIR / "gitleaks-port.toml"
+    if not ported.is_file():
+        pytest.skip("gitleaks-port.toml not yet vendored")
+    rules = load_rules_from_path(ported)
+    assert len(rules) > 0
+    assert all(r.id.startswith("gitleaks-") for r in rules)
+    assert len({r.id for r in rules}) == len(rules), "duplicate ids in port"
+
+
+def test_builtin_and_ported_ids_disjoint():
+    from token_hunt.patterns_loader import BUILTIN_PATTERNS_DIR, load_rules_from_path
+    base = load_rules_from_path(BUILTIN_PATTERNS_DIR / "builtin.toml")
+    ported_path = BUILTIN_PATTERNS_DIR / "gitleaks-port.toml"
+    if not ported_path.is_file():
+        pytest.skip("port not vendored yet")
+    ported = load_rules_from_path(ported_path)
+    assert not ({r.id for r in base} & {r.id for r in ported})
