@@ -11,6 +11,13 @@ def test_load_builtin_rules_returns_list():
     assert len(rules) == 48 + len(load_rules_from_path(ported))
 
 
+def test_corpus_acceptance_gate():
+    # the full gitleaks port (217 rules) + 48 builtins must always load; if
+    # this dips below 200, a batch or the port file itself went missing
+    rules = load_builtin_rules()
+    assert len(rules) >= 200, f"corpus acceptance gate: expected >= 200 rules, got {len(rules)}"
+
+
 def test_rules_have_required_fields():
     rules = load_builtin_rules()
     for rule in rules:

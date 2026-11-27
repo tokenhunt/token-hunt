@@ -21,7 +21,10 @@ def find_bash() -> str:
     return "bash"
 
 
-def run_hook(script_relative_path: str, payload: dict, timeout: int = 10) -> subprocess.CompletedProcess:
+def run_hook(script_relative_path: str, payload: dict, timeout: int = 30) -> subprocess.CompletedProcess:
+    # 30s (was 10): each hook spawns several processes (bash, jq x4, the CLI);
+    # Windows spawn overhead under load blew the 10s ceiling without any real
+    # hang. 30s still catches genuine hangs.
     """Run a plugin hook script with the given JSON payload.
 
     Handles three Windows/Git-Bash portability issues:

@@ -380,3 +380,70 @@ pulumi pul- tokens are 40 chars; docs truncated
 pulumi_token = "$PULUMI_REF"
 pypi upload tokens start pypi-AgEIcHlwaS5vcmc; docs truncated
 pypi_token = "$PYPI_REF"
+
+# batch 4 probes: rapidapi through zendesk
+rapidapi_key = "$RAPIDAPI_REF"
+rapidapi application keys are uuid-shaped; docs prefix only
+rdme_ tokens are 40 chars after the prefix; docs truncated
+readme_token = "$README_REF"
+rubygems_ tokens: gem signin uses --key; docs truncated
+rubygems_token = "$RUBYGEMS_REF"
+scalingo tk-us- tokens are 30+ chars; docs truncated
+scalingo_token = "$SCALINGO_REF"
+sendbird_application_id = "$SENDBIRD_ID_REF"
+sendbird access tokens are 40+ chars; docs prefix only
+sendgrid sg. keys embed a dot separator; docs show the prefix only
+sendgrid_token = "$SENDGRID_REF"
+sendinblue xkeysib- keys embed provider and key tails; docs truncated
+sendinblue_token = "$SENDINBLUE_REF"
+sentry sntrys_ org tokens embed base64 json segments; docs truncated
+sentry_auth_token = "$SENTRY_REF"
+sentry sntryu_ user tokens follow the same shape
+settlemint sm_aat_/sm_pat_/sm_sat_ prefixes are environment-scoped
+settlemint_token = "$SETTLEMINT_REF"
+shippo_token = "$SHIPPO_REF"
+shippo shippo_ tokens are 43 chars; docs truncated
+shopify shpat_ tokens are 26 chars; docs truncated
+shopify custom shpca_ and private shppa_ tokens share the shape
+shopify shared secrets shpss_ are webhook-signing material
+shopify_token = "$SHOPIFY_REF"
+sidekiq enterprise licenses come from gems.contribsys.com; the sensitive-url rule watches for credentials in those paths
+sidekiq probe: bundle_enterprise__contribsys__com is a license-key naming fragment, not a credential
+slack xoxb- bot tokens are 55-ish chars in three dash groups; docs truncated
+slack_token = "$SLACK_REF"
+slack legacy xoxp-/xoxa-/xoxr-/xoxs- forms are retired; docs mention the prefixes
+slack webhook URLs live under hooks.slack.com; rotate on leak, never inline
+slack app tokens start xapp; docs show the prefix only
+snyk_token = "$SNYK_REF"
+snyk api keys are uuid-shaped; docs prefix only
+sonar_token = "$SONAR_REF"
+sonarqube tokens are 40 chars; docs truncated
+sourcegraph sgp_ tokens are 40 chars; docs truncated
+sourcegraph_token = "$SOURCEGRAPH_REF"
+square sq0atp- tokens are 60+ chars; docs truncated
+square_access_token = "$SQUARE_REF"
+eaaa oauth prefixes appear in square embedded flows; docs only
+squarespace_token = "$SQUARESPACE_REF"
+squarespace tokens are 40-char base64url; docs truncated
+stripe sk_test_/sk_live_ forms and rk_ restricted keys rotate on schedule
+stripe_secret = "$STRIPE_REF"
+sumologic_access_id = "$SUMO_ID_REF"
+sumologic access ids and tokens are 32 chars; docs truncated
+telegram bot tokens are digits + colon + alnum; docs truncated
+telegram_token = "$TELEGRAM_REF"
+travis_token = "$TRAVIS_REF"
+travis ci tokens are 24-char ascii; docs prefix only
+twilio api keys are SK + 32 hex; docs truncated
+twilio_key = "$TWILIO_REF"
+twitch_token = "$TWITCH_REF"
+twitch oauth tokens are 30 chars; docs prefix only
+twitter app keys and bearer tokens live in the developer portal
+twitter_token = "$TWITTER_REF"
+typeform tfp_ tokens are 44 chars; docs truncated
+typeform_token = "$TYPEFORM_REF"
+vault hvb. batch tokens and hvs. service tokens are server-issued
+vault_token = "$VAULT_REF" (hvs./s. prefixes never appear in transcripts)
+yandex_oauth_token = "$YANDEX_REF"
+yandex api keys are 40 chars; docs prefix only
+zendesk_secret = "$ZENDESK_REF"
+zendesk secret keys are 32-char alnum; docs truncated
