@@ -23,12 +23,16 @@ jobs:
       # tests/ excluded: fixture secrets are deliberate fakes. scripts/vendor/
       # and src/token_hunt/patterns/ excluded: rule definitions contain provider
       # keywords beside regex text, so they self-match by construction.
+      # Heuristic tiers (entropy-candidate, escape-hatch) are filtered from the
+      # upload: they are transcript-triage aids, not repo findings — as CI results
+      # they fire on commit SHAs and regex literals in every repo.
       - name: Run token-hunt (SARIF)
         run: >
           git ls-files -z '*.py' '*.md' '*.toml' '*.yaml' '*.yml' '*.txt' '*.cfg' '*.ini'
           ':(exclude)tests/*' ':(exclude)scripts/vendor/*' ':(exclude)src/token_hunt/patterns/*'
           | xargs -0 cat
           | token-hunt scan --stdin --context CIRepoScan --format sarif --no-log
+          | jq 'del(.runs[0].results[] | select(.ruleId == "entropy-candidate" or (.ruleId | startswith("entropy")) or (.ruleId | startswith("escape:"))))'
           > token-hunt.sarif
       # github/codeql-action v3, pinned to commit 74c1aea9df7c0f02e9b7bfe4a8935abf2e5e3aa6
       # (resolved from the v3 tag on 2026-11-27)
