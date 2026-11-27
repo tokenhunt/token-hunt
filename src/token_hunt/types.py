@@ -11,6 +11,7 @@ class Rule:
     description: str = ""
     keywords: tuple[str, ...] = ()
     rotate_url: str = ""
+    secret_group: int = 0  # 0 = whole match; >0 = capture group index holding the secret
 
 
 @dataclass(frozen=True)

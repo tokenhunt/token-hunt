@@ -7,7 +7,7 @@ from tests.fixtures import (
 )
 from token_hunt.patterns_loader import load_builtin_rules
 from token_hunt.regex_scanner import _fingerprint, scan_regex
-from token_hunt.types import ScanContext
+from token_hunt.types import Rule, ScanContext
 
 
 @pytest.fixture
@@ -74,6 +74,39 @@ def test_multiple_matches_in_one_text(rules, ctx):
     text = f"{ZAI_KEY} {ANTHROPIC_KEY} {GITHUB_PAT}"
     matches = scan_regex(text, rules, ctx)
     assert len(matches) >= 3
+
+
+def test_secret_group_extracts_capture():
+    rule = Rule(
+        id="grp-rule",
+        regex=r"token\s*=\s*([A-Za-z0-9]{8})",
+        secret_group=1,
+    )
+    ctx = ScanContext(detection_point="UserPromptSubmit")
+    matches = scan_regex("token = abcd1234", [rule], ctx)
+    assert len(matches) == 1
+    assert matches[0].value == "abcd1234"
+
+
+def test_secret_group_no_capture_group_skips():
+    rule = Rule(id="bad-grp", regex=r"[A-Za-z0-9]{8}", secret_group=3)
+    ctx = ScanContext(detection_point="UserPromptSubmit")
+    assert scan_regex("abcd1234", [rule], ctx) == []
+
+
+def test_secret_group_non_participating_group_skips():
+    rule = Rule(
+        id="opt-grp",
+        regex=r"(?:x)?(y)?z",
+        secret_group=1,
+    )
+    ctx = ScanContext(detection_point="UserPromptSubmit")
+    # "z" matches but group 1 didn't participate -> None -> match skipped
+    assert scan_regex("z", [rule], ctx) == []
+    # group 1 present -> extracted
+    matches = scan_regex("yz", [rule], ctx)
+    assert len(matches) == 1
+    assert matches[0].value == "y"
 
 
 def test_keyword_prefilter_skips_obvious_non_matches(rules, ctx):

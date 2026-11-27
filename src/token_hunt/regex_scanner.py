@@ -36,6 +36,14 @@ def scan_regex(text: str, rules: Iterable[Rule], ctx: ScanContext) -> list[Match
         for line_no, line in enumerate(lines, start=1):
             for m in pattern.finditer(line):
                 value = m.group(0)
+                if rule.secret_group > 0:
+                    try:
+                        value = m.group(rule.secret_group)
+                    except IndexError:
+                        continue  # group index beyond pattern's capture groups
+                    if not value:
+                        continue  # group didn't participate in this match
+
                 matches.append(Match(
                     kind=rule.id,
                     value=value,
@@ -45,6 +53,7 @@ def scan_regex(text: str, rules: Iterable[Rule], ctx: ScanContext) -> list[Match
                     confidence=0.95,  # regex match = high confidence
                     rule_id=rule.id,
                     line=line_no,
+                    # column = whole-match start, even when value comes from a capture group
                     column=m.start() + 1,
                 ))
     return matches
