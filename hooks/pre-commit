@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# token-hunt pre-commit hook: scan staged changes at commit time.
+# Install: git config core.hooksPath hooks   (after copying this dir into your repo)
+set -euo pipefail
+
+if ! command -v token-hunt >/dev/null 2>&1; then
+  echo "token-hunt not installed — pre-commit scan skipped (pip install token-hunt)" >&2
+  exit 0
+fi
+
+DIFF="$(git diff --cached --unified=0 | grep '^+' | grep -v '^+++')"
+if [ -z "$DIFF" ]; then
+  exit 0
+fi
+
+if printf '%s\n' "$DIFF" | token-hunt scan --stdin --context PreCommit --no-log; then
+  exit 0
+else
+  echo "" >&2
+  echo "token-hunt: potential secret in staged changes. Commit blocked." >&2
+  echo "Rotate the credential, then re-stage. (Bypass with git commit --no-verify — human call, never an agent's.)" >&2
+  exit 1
+fi
