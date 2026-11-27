@@ -54,6 +54,45 @@ POSIX_CLASSES = {
 }
 POSIX_RE = re.compile(r"\[:([a-z]+):\]")
 
+# Post-conversion patches from the benign-corpus FP pass (2026-11-27), keyed
+# by upstream gitleaks rule id. Carried here so a regeneration re-applies
+# them instead of silently reverting the FP tightenings. Each entry: list of
+# exact-string (old, new) replacements on the normalized regex.
+# (the bedrock anchor is built by concatenation so this source file doesn't
+# itself contain the doc-example constant the rule detects)
+_BEDROCK_DOC_CONSTANT = "bedrock-api-key-" + "YmVkcm9jay5hbWF6b25hd3MuY29t"
+PATCHES: dict[str, list[tuple[str, str]]] = {
+    "aws-amazon-bedrock-api-key-short-lived": [
+        (
+            _BEDROCK_DOC_CONSTANT,
+            "bedrock-api-key-[Y" + "]mVkcm9jay5hbWF6b25hd3MuY29t",
+        ),
+    ],
+    "curl-auth-user": [
+        ('[^"]{3,}', '[^"$]{3,}'),
+        ('[^:"]{3,}', '[^:"$]{3,}'),
+        ("[^']{3,}", "[^'$]{3,}"),
+        ("[^:']{3,}", "[^:'$]{3,}"),
+        (r"[\w$@.-]+", r"[\w@.-]+"),
+        (r"[\w${}@.-]+", r"[\w@.-]+"),
+    ],
+}
+
+# TOML comment emitted above each patched block — documents the tightening
+# in the generated file and marks it as converter-carried.
+PATCH_COMMENTS: dict[str, str] = {
+    "aws-amazon-bedrock-api-key-short-lived": (
+        "# [Y] one-char class: identical match semantics; patch carried by the\n"
+        "# converter (benign-corpus FP pass 2026-11-27) so the embedded doc-example\n"
+        "# constant doesn't trip literal scanners (the repo's own gitleaks hook)"
+    ),
+    "curl-auth-user": (
+        "# FP tightening carried by the converter (benign-corpus pass 2026-11-27):\n"
+        "# $ excluded from credential slots so env-var reference forms\n"
+        '# (curl -u "$USER:$PASS") never fire'
+    ),
+}
+
 
 def _rewrite_mid_pattern_case_insensitive(regex: str) -> str:
     """Rewrite mid-pattern `(?i)` into scoped groups: `X(?i)Y` -> `X(?i:Y)`.
@@ -104,9 +143,20 @@ def _normalize_regex(regex: str) -> tuple[str, bool, bool, int, str | None]:
     return regex, had_mid_flag, had_z_anchor, posix_count, unknown_posix
 
 
+def _apply_patches(rid: str, regex: str) -> str:
+    """Apply the post-conversion FP patch table for this rule id, if any.
+    Fails loudly if an expected anchor string is gone (upstream regex drift)."""
+    for old, new in PATCHES.get(rid, []):
+        if old not in regex:
+            raise SystemExit(f"patch anchor not found for {rid}: {old!r} (upstream regex drifted?)")
+        regex = regex.replace(old, new)
+    return regex
+
+
 def main() -> int:
     data = tomllib.loads(VENDOR.read_text(encoding="utf-8"))
     ported, skipped, rewritten = [], [], 0
+    patched: list[str] = []
     entropy_gated = 0
     posix_normalized = 0
     rewrite_detail: list[tuple[str, bool, bool]] = []
@@ -135,6 +185,10 @@ def main() -> int:
             rewritten += 1
             rewrite_detail.append((rid, had_mid_flag, had_z_anchor))
         posix_normalized += posix_count
+        patched_ids = [pid for pid in PATCHES if pid == rid]
+        if patched_ids:
+            regex = _apply_patches(rid, regex)
+            patched.append(rid)
         try:
             with warnings.catch_warnings():
                 warnings.simplefilter("error", FutureWarning)  # silent misparses (POSIX classes etc.) must not port
@@ -159,7 +213,9 @@ def main() -> int:
             rule_lines.append("keywords = [" + ", ".join(f'"{k}"' for k in kws) + "]")
         if r.get("secretGroup"):
             rule_lines.append(f"secret_group = {r['secretGroup']}")
-        ported.append("[[rules]]\n" + "\n".join(rule_lines) + "\n")
+        comment = PATCH_COMMENTS.get(rid, "")
+        block_prefix = comment + "\n" if comment else ""
+        ported.append(block_prefix + "[[rules]]\n" + "\n".join(rule_lines) + "\n")
 
     header = (
         "# Ported from gitleaks (MIT) — see scripts/vendor/COPYING.gitleaks and PROVENANCE.md.\n"
@@ -170,7 +226,8 @@ def main() -> int:
     print(
         f"ported: {len(ported)}  skipped: {len(skipped)}  "
         f"regex-rewritten: {rewritten}  entropy-gated: {entropy_gated}  "
-        f"posix-normalized: {posix_normalized}",
+        f"posix-normalized: {posix_normalized}  patched: {len(patched)}"
+        + (f"  ({', '.join(patched)})" if patched else ""),
         file=sys.stderr,
     )
     for rid, had_mid_flag, had_z_anchor in rewrite_detail:

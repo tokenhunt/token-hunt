@@ -129,7 +129,7 @@ def _sample(rng: random.Random, parsed, depth: int = 0) -> str:
             lo, hi, item = av
             if hi == sre_constants.MAXREPEAT:
                 hi = max(lo, MAX_REPEAT_LEN)
-            if hi < lo:
+            if hi < lo:  # paranoia: unreachable — MAXREPEAT expands to >= lo above, and re.compile rejects {n,m} with m < n
                 raise Unsupported(f"repetition {{{lo},{hi}}} has empty range")
             n = rng.randint(lo, min(hi, max(lo, MAX_REPEAT_LEN)))
             # n independent draws — duplicating one draw kills entropy gates
@@ -179,8 +179,10 @@ def _synthesize(rng: random.Random, rule) -> tuple[str, str, str]:
                 negative = candidate
                 break
         if negative is None:
-            # end-truncation can't break the match (open-ended repetition);
-            # mutate the token's last char into one the sample alphabet avoids
+            # two negative strategies coexist: end-truncation is the canonical
+            # negative (negative = partial token), but open-ended repetitions
+            # ({n,}) still match after any truncation — for those, mutate the
+            # token's last char into one the sample alphabet avoids
             for brk in "!?#%":
                 candidate = positive[:-1] + brk
                 if candidate != positive and not scan_regex(candidate, [rule], Ctx):
@@ -240,7 +242,7 @@ def main() -> int:
     for note in fallback_notes:
         print(f"NOTE {note}", file=sys.stderr)
     print(f"\nemitted: {len(emitted)}  needs-hand-fixture: {len(hand_fixtures)}", file=sys.stderr)
-    return min(len(hand_fixtures), 125)
+    return min(len(hand_fixtures), 125)  # >125 is reserved/undefined as a process exit code
 
 
 if __name__ == "__main__":

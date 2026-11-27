@@ -6,10 +6,9 @@ from token_hunt.patterns_loader import Rule, load_builtin_rules
 def test_load_builtin_rules_returns_list():
     from token_hunt.patterns_loader import BUILTIN_PATTERNS_DIR, load_rules_from_path
     ported = BUILTIN_PATTERNS_DIR / "gitleaks-port.toml"
-    ported_count = len(load_rules_from_path(ported)) if ported.is_file() else 0
     rules = load_builtin_rules()
     assert isinstance(rules, list)
-    assert len(rules) == 48 + ported_count
+    assert len(rules) == 48 + len(load_rules_from_path(ported))
 
 
 def test_rules_have_required_fields():
