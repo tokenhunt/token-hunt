@@ -12,6 +12,7 @@ class Rule:
     keywords: tuple[str, ...] = ()
     rotate_url: str = ""
     secret_group: int = 0  # 0 = whole match; >0 = capture group index holding the secret
+    entropy: float = 0  # bits/char threshold on the matched value; 0 = disabled
 
 
 @dataclass(frozen=True)
