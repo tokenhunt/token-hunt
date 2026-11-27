@@ -19,7 +19,7 @@ def main() -> None:
 @click.option("--stdin", is_flag=True, help="Read text from stdin instead of file.")
 @click.option("--context", default="UserPromptSubmit",
               help="Detection point (UserPromptSubmit, PreToolUse:Bash, etc.)")
-@click.option("--format", "fmt", default="text", type=click.Choice(["text", "json"]))
+@click.option("--format", "fmt", default="text", type=click.Choice(["text", "json", "sarif"]))
 @click.option("--no-log", is_flag=True, help="Don't write to rotations.log.")
 def scan(path, stdin, context, fmt, no_log):
     """Scan a file or stdin for secret leaks."""
@@ -43,6 +43,12 @@ def scan(path, stdin, context, fmt, no_log):
 
     ctx = ScanContext(detection_point=context, file_path=file_path)
     result = scan_engine(text, ctx)
+
+    if fmt == "sarif":
+        from token_hunt.patterns_loader import load_builtin_rules
+        from token_hunt.sarif import emit_sarif
+        click.echo(emit_sarif(result.matches, load_builtin_rules(), __version__))
+        return
 
     if not no_log and result.matches:
         store = Store()

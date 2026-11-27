@@ -6,6 +6,7 @@ import pytest
 from click.testing import CliRunner
 
 import token_hunt
+import token_hunt.store as token_hunt_store
 from tests.fixtures import ZAI_KEY
 from token_hunt.cli import main
 
@@ -155,3 +156,42 @@ def test_watch_detects_new_file(runner, tmp_path, monkeypatch):
     log = fake_home / ".token-hunt" / "rotations.log"
     assert log.is_file()
     assert "zai-api-key" in log.read_text()
+
+
+def test_scan_sarif_output_parses(runner, tmp_path, monkeypatch):
+    fake_home = tmp_path / "home"
+    fake_home.mkdir()
+    monkeypatch.setenv("USERPROFILE", str(fake_home))
+    monkeypatch.setenv("HOME", str(fake_home))
+    result = runner.invoke(main, ["scan", "--stdin", "--format", "sarif"], input=f"key={ZAI_KEY}")
+    assert result.exit_code == 0
+    doc = json.loads(result.output)
+    assert doc["version"] == "2.1.0"
+    results = doc["runs"][0]["results"]
+    assert len(results) == 1
+    assert results[0]["level"] == "error"
+
+
+def test_scan_sarif_never_touches_store(runner, tmp_path, monkeypatch):
+    fake_home = tmp_path / "home"
+    fake_home.mkdir()
+    monkeypatch.setenv("USERPROFILE", str(fake_home))
+    monkeypatch.setenv("HOME", str(fake_home))
+
+    appended = []
+    real_store = token_hunt_store.Store
+
+    class SpyStore(real_store):
+        def append(self, record):
+            appended.append(record)
+
+    monkeypatch.setattr(token_hunt_store, "Store", SpyStore)
+    result = runner.invoke(main, ["scan", "--stdin", "--format", "sarif"], input=f"key={ZAI_KEY}")
+    assert result.exit_code == 0
+    assert json.loads(result.output)["runs"][0]["results"]
+    assert appended == []
+
+    # same leaking input in text format DOES hit the store (spy sanity check)
+    result = runner.invoke(main, ["scan", "--stdin", "--format", "text"], input=f"key={ZAI_KEY}")
+    assert result.exit_code == 0
+    assert len(appended) == 1
