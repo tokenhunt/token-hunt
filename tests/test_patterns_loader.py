@@ -4,9 +4,11 @@ from token_hunt.patterns_loader import Rule, load_builtin_rules
 
 
 def test_load_builtin_rules_returns_list():
+    from token_hunt.patterns_loader import BUILTIN_PATTERNS_DIR, load_rules_from_path
+    ported = BUILTIN_PATTERNS_DIR / "gitleaks-port.toml"
     rules = load_builtin_rules()
     assert isinstance(rules, list)
-    assert len(rules) == 48
+    assert len(rules) == 48 + len(load_rules_from_path(ported))
 
 
 def test_rules_have_required_fields():
@@ -15,7 +17,10 @@ def test_rules_have_required_fields():
         assert isinstance(rule, Rule)
         assert rule.id
         assert rule.regex
-        assert rule.rotate_url.startswith("https://") or rule.id.startswith("generic-")
+        # ported gitleaks rules omit rotate_url by policy (unknown provider mapping)
+        assert rule.rotate_url.startswith("https://") or rule.id.startswith(
+            "generic-"
+        ) or rule.id.startswith("gitleaks-")
 
 
 def test_zai_rule_present():

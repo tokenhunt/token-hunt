@@ -1,0 +1,245 @@
+# Benign corpus for the gitleaks-port FP pass.
+# Realistic agent-transcript content that must NOT trigger any ported rule.
+# All identifiers below are fabricated placeholders, references, or
+# structural near-misses (right keyword, wrong shape). No real credentials.
+
+git commit 3f2a91c7d84b5e6209f18d7c4a3b2e1f0a6b5c9 fixed the retry loop
+git commit a91f3c27d84b5e6209f18d7c4a3b2e1f0a6b5c4 (HEAD -> main, origin/main)
+short hash a91f3c2 in the changelog
+compare a91f3c2...3f2a91c for the revert range
+sha256 checksum: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
+blake2b digest 8e2f1c9a4b7d6e3f0a5c8b1d4e7f2a9c6b3d0e5f8a1c4b7d2e9f3a6c0b5d8e1
+sha512 61d034473102da756d80b9bb2a1e2e7e2b3c8d9f0a1b2c3d4e5f60718293a4b5c6d7e8f9012345678901
+md5 d41d8cd98f00b204e9800998ecf8427e (empty input, textbook case)
+sha1 5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8 for "password", do not use as a reference hash
+etag W/"3f2a91c7d84b5e6209f18d7c4a3b2e1f"
+blob 8a2b4c6d8e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b in the object store
+
+550e8400-e29b-41d4-a716-446655440000
+6fa459ea-ee8a-3ca4-894e-db77e160355e
+uuidgen twice: 3d7c8f2a-91b4-4e6a-8c3d-2f5a9b1e7c40 and 9e2f4a6b-8c1d-4a3e-b7f2-5d9c1a8e3b6f
+request id req_7f3a9c2e1b84d5a6f0c3e9b2a4d8f16c logged at warn level
+trace id 4bf92f3577b34da6a3ce929d0e0e4736 span 00f067aa0ba902b7
+correlation id c9bf9e57-1685-4c89-bafb-ff5af830be8a propagated via headers
+session sid_9f3a2b1c8d4e5f6a7b8c9d0e1f2a3b4c expired after 30 minutes
+idempotency key Idempotency-Key: <client-generated-uuid>
+kubernetes pod hash deploy-7d9f8c6b5a-4xk2p container 8a3f5c2e
+
+YXNzaXN0YW50IHRleHQgdGhhdCBsb29rcyBsaWtlIGJhc2U2NCBidXQgaXMganVzdCBhIG5vdGU=
+U29tZSBsb25nZXIgYmFzZTY0IGJsb2IgdGhhdCBjb21lcyBmcm9tIGFuIGVtYmVkZGluZyB2ZWN0b3IgZXhwb3J0
+decoded JWT header eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 shows HS256, signature redacted
+jwt payload fragment eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InRlc3QifQ (no signature attached)
+SGVsbG8sIHRoaXMgaXMgYSBmcmllbmRseSBiYXNlNjQgc2FtcGxlIHN0cmluZyBmb3IgdGVzdGluZw==
+attachment payload part 1/3: Q1RGT0JDUC1UZXN0LVBheWxvYWQtU2VnbWVudC0x
+attachment payload part 2/3: Q1RGT0JDUC1UZXN0LVBheWxvYWQtU2VnbWVudC0y
+attachment payload part 3/3: Q1RGT0JDUC1UZXN0LVBheWxvYWQtU2VnbWVudC0z
+docker layer sha256:4a5e1d0c9b8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4
+s3 etag 9b2cf535f27731c974343645a3985328 for multipart upload
+padding bytes AAAAAAAA encoded as YWFkZHNmYXNkZmFzZGZhc2RmYXNkZmFzZGY=
+image digest sha256:0e3b2a1c9d8f7e6b5a4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1
+tarball integrity sha512-integrity-value-in-package-lock-files-only
+
+curl -sS https://api.github.com/repos/example/example -H "Accept: application/vnd.github+json"
+curl -X POST https://hooks.internal.example/v1/notify -d '{"level":"warn"}'
+curl -H "Authorization: Bearer $DEPLOY_TOKEN" https://ci.internal.example/deploy
+curl -H "Authorization: Bearer ${SECRET_PLACEHOLDER}" --request POST https://example.invalid/echo
+curl --header "X-Api-Key: $READONLY_KEY" https://metrics.internal.example/summary
+curl -u "$CI_USER:$CI_PASS" https://registry.internal.example/v2/_catalog
+curl -u "$TRAC_USER:$TRAC_PASS" https://trac.internal.example/rpc
+curl -fsSL https://get.example.tool/install.sh | sh
+curl -I https://example.com/robots.txt
+curl --user "$USER_ID:$SERVICE_PASS" -T bundle.tar.gz https://artifacts.internal.example/upload
+curl -H "Authorization: Basic $B64_CREDS_PLACEHOLDER" https://legacy.internal.example/api
+curl -H 'X-Api-Token: $PIPELINE_TOKEN_REF' https://builder.internal.example/jobs
+curl -sS -H @headers.txt https://api.example.com/v1/projects
+GET /v1/records HTTP/1.1 with Authorization: Bearer <redacted>
+Authorization: Bearer <jwt-redacted-by-dlp> (original kept out of the transcript)
+authorization: basic <base64-placeholder> (from the incident notes, redacted)
+proxy-authorization: Basic <redacted-by-dlp>
+X-Api-Key: $INGEST_KEY_ENV_REF on the metrics sidecar
+
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Read(~/.zshrc)",
+      "WebFetch(domain:docs.example.dev)"
+    ]
+  },
+  "env": {
+    "ANTHROPIC_API_KEY": "$ANTHROPIC_API_KEY",
+    "GITHUB_TOKEN": "$GITHUB_TOKEN",
+    "SLACK_WEBHOOK": "$SLACK_WEBHOOK_URL",
+    "OPENWEATHER_KEY": "$OPENWEATHER_KEY"
+  },
+  "enableAllProjectMcpServers": false
+}
+
+export DATABASE_URL=postgres://app:$DB_PASS@db.internal.example:5432/appdb
+export REDIS_URL=redis://cache.internal.example:6379/0
+export S3_BUCKET=artifacts-prod-eu-central
+os.environ["DEPLOY_KEY"]  # referenced, never inlined
+print(os.getenv("STRIPE_SECRET", "<unset>"))
+subprocess.run(["git", "push", "origin", "main"], check=True)
+docker run -e API_KEY --rm builder.internal.example/ci:stable
+kubectl create secret generic deploy-creds --from-env-file=secrets.env
+echo "token is read from the keyring, never echoed into logs"
+vault kv get -field=token secret/ci/deploy
+SOPS_AGE_KEY_FILE=./age.key npm run decrypt:secrets
+
+random-seeded fixtures:
+a91f3c27d84b5e62.json
+0f8e7d6c5b4a39281706f5e4d3c2b1a0.lock
+eb1f3a5d7c9b2e4f6a8d0c2e4b6f8a0c2d4e6f8a.log
+entropy-test-file-x9k2m4q7v1b5n3j8.wav
+blobstore-0f1e2d3c4b5a69788796a5b4c3d2e1f0.parquet
+run-artifact-9f8e7d6c5b4a39281706f5e4d3c2b1a0.tgz
+checkpoint-e3b0c44298fc1c149afbf4c8996fb924.step
+diff-patch-2f1e0d9c8b7a65443322110ff0ee9d8c.patch
+coverage-report-4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d.xml
+seed-vector-8899aabbccddeeff0011223344556677.npy
+
+# provider keyword probes: right keyword, wrong shape (placeholders + refs)
+airtable_base = "app" + "XXXXXXXXXXXXXX"  # 17-char ids start with app; this is a stub
+AIRTABLE_KEY = "$AIRTABLE_API_KEY"
+algolia_index = "prod_search_index_2024_11"
+algolia.admin_key = <read from 1password, not inlined>
+ALGOLIA_KEY: process.env.ALGOLIA_WRITE_KEY
+asana_workspace_id = "1203887517460" (numeric but 13 digits, not a client id)
+asana_client_id = "<16-digit-placeholder>"  # configured in the oauth app console
+asana PAT example format: see docs, never paste live values into tickets
+atlassian_api_token = "$ATLASSIAN_API_TOKEN_REF"
+jira.site = confluence.example.internal
+jira_token = <stored in keychain>
+ATATT3 placeholder: the real 190-char token lives in the org vault
+beamer_post = b_" + "placeholder"  # 44-char tokens only, this is prose
+bitbucket_repo = workspace/repo-name
+bitbucket.app_password = "$BB_APP_PASSWORD_REF"
+bittrex v3 API is sunset; the old bittrex_key config slot is dead
+bittrex_api_key = ""  # intentionally blank in the sample config
+cloudflare_zone = example.dev
+cloudflare_api_token = "$CF_API_TOKEN_REF"
+cloudflare account ids are 32 hex and public identifiers, not credentials
+CLOUDFLARE_API_TOKEN read via wrangler login session
+codecov_token = "$CODECOV_TOKEN_REF"
+codecov uploader checksum verified before run
+cohere_model = command-r-plus
+cohere_api_key = "$COHERE_KEY_REF"
+coinbase webhook signature verification uses an hmac, not a stored token
+confluent_cluster = lkc-abcde
+confluent_key = "$CONFLUENT_KEY_REF"
+contentful_space = "master"
+contentful_token = "$CONTENTFUL_REF"
+datadog_site = datadoghq.com
+datadog_api_key = "$DD_API_KEY_REF"
+discord_webhook = "$DISCORD_WEBHOOK_REF" (webhook URLs are rotated monthly)
+discord channel: #alerts-prod, guild id 1234567890123456789 (18 digits, public)
+discord_bot_token read from the platform secrets manager
+droneci secret is injected by the runner, never committed
+doppler config: dp.pt. tokens rotate every 90 days (format reference only)
+digitalocean doo_v1_ tokens are 64 hex after the prefix; doc example truncated
+digitalocean dop_v1_ <64-hex-placeholder> — see the cloud console
+databricks dapi<32hex> tokens are workspace-scoped
+dapi0123456789abcdef0123456789abcde  # 31 hex chars, doc truncation
+dropbox_app = "my-tools-sync"
+dropbox_token = "$DROPBOX_REF"
+dropbox short-lived tokens are 15 chars; the legacy 64-char form is retired
+age recipients in this repo use the X25519 form age1..., not secret keys
+AGE-SECRET-KEY-1 example values in docs are truncated to 57 body chars
+AGE-SECRET-KEY-1 + 58 body chars from QPZRY9X8GF2TVDW0S3JN54KHCE6MUA7L (doc shape, truncated)
+alibaba access keys look like LTAI + 20 chars; docs show LTAI<20-char-placeholder>
+LTAI5tA1b2C3d4E5f6G7h8I9j0K1l2M3n4O5  # 20 chars after LTAI? no: this is 21, doc variant
+LTAIplaceholder-value-not-real  # obviously prose
+akcp reference tokens start AKCp and are 73 chars; doc excerpts are truncated
+AKCp placeholder — see artifactory identity token docs
+cmvmd reference tokens start with base64 of "ref:"; docs show the prefix only
+cmVmdGtubHJxLnRtcDp placeholder in the migration notes
+meraki org id is numeric; the 40-hex string is the dashboard api key
+meraki_api_key = "$MERAKI_KEY_REF"
+clickhouse cloud keys: 4b1d + 38 chars; docs show the prefix only
+4b1d docs-mention-only, real keys live in the console
+clojars tokens: CLOJARS_ + 60 chars; the sample below is prose
+CLOJARS_ + 60 chars described in the publishing guide
+1password service tokens: ops_ + eyJ + 250 chars; docs never inline them
+ops_ prefix is also used for ops_ incidents naming in this fleet — context differs
+sk-ant-api03 docs mention the 95-char form; placeholders only in this repo
+sk-ant-api03 + 93 chars + AA is the documented shape
+sk-ant-admin01 keys are org-scoped; placeholder only
+p8e- client secrets: 32 lowercase alnum after the prefix; docs truncated
+p8e-<32-char-placeholder>
+aws access keys: AKIA + 16 chars, or the newer A3T prefix form
+AKIA docs reference only, keys live in SSO
+ASIA temporary credentials expire in hours; never store them
+ABIA/ACCA prefixes are documented but unused here
+absk bedrock keys embed base64 of the endpoint; long-form docs only
+absk<109-269 chars> documented shape, placeholder in notes
+bedrock-api-key- values embed the amazon endpoint constant
+bedrock-api-key-<base64-of-endpoint> is the documented EXAMPLE form, not a live key
+authress sc_ ext_ scauth_ authress_ clients follow host.accountId.connector format
+sc_ placeholder account ids live in the idp config, not here
+dnkey- tokens are defined-networking api tokens; prefix docs only
+dnkey-<26-char>-<52-char> documented shape
+q~ azure secret shape is 3 chars + digit + Q~ + tail; docs truncated
+azure ad client secret example: Abc1Q~placeholder-placeholder-placeholder
+
+# misc transcript prose and code
+the retry uses exponential backoff with jitter, capped at 5 attempts
+lgtm — merging after the CI run finishes
+the flaky test is test_regex_scanner.py::test_multiline, quarantined for now
+TODO(jordan): bump the rotation interval to 30d
+> quote from the incident review: placeholder values are never real credentials
+see docs at https://docs.example.dev/secrets/policy for the handling rules
+def rotate_credential(ref: str) -> None:  # resolves from the keyring
+    value = keyring.get_password("svc", ref)
+    if value is None:
+        raise LookupError(ref)
+config: { "retries": 3, "timeout_ms": 2500, "verify_tls": true }
+```python
+client = Client(base_url=BASE_URL, auth=TokenAuth(os.environ["SVC_TOKEN"]))
+```
+the diff touches only tests/ — no runtime behavior change
+pipeline stages: lint -> unit -> integration -> deploy-staging
+failed: e2e-auth-check (422) because the placeholder env var was unset
+note: token placeholders in docs use the form <prefix><placeholder>
+log line: 2026-11-27T14:03:11Z WARN auth probe retry 2/5 next=8.3s
+PR #14 description mentions rotating the staging token next sprint
+meeting notes: key custody stays with the operator, agents reference only
+the migration renamed table api_keys_credential to api_credential_key
+include $(TOPDIR)/rules.mk in the makefile fragment
+grep -R "SECRET" docs/ | grep -v template | head -20
+the entropy gate fires below 3.0 bits/char on the captured value
+fingerprint dedup uses the first 16 hex chars of sha256
+allowlist entries are fingerprint-scoped, never value-scoped
+the allowlist matched 3 entries in .gitleaksignore during the last sweep
+rotate url mapping is provider-specific and intentionally omitted for ports
+batch slicing is alphabetical by rule id across four commits
+negative fixtures truncate the positive by one seventh of its length
+keyword pre-filter checks lowercase substring membership
+secret_group 0 means the whole match is the reported value
+the hook exits non-zero on any detection at UserPromptSubmit
+PostToolUse:Read scans add file_path context to matches
+match confidence is fixed at 0.95 for regex hits
+entropy is computed as Shannon bits per char over the matched span
+python re rejects mid-pattern global flags; the converter rewrites them
+RE2 \z anchors map to python \Z with identical semantics
+POSIX classes are translated to explicit ASCII ranges by the converter
+duplicate ids are deduped keeping the first occurrence
+path-scoped rules are skipped: file-tree scope is meaningless here
+the compile gate runs with FutureWarning as error
+tomllib requires python 3.11; older interpreters use tomli
+wheel packaging ships the patterns directory as shared data
+scan_regex splits text into lines before matching
+line numbers are 1-based; column is the whole-match start
+fingerprint collision would need 2^64 values on average
+the vault path for plans is outside any git repo
+rotation queue items execute on the bundled wednesday cadence
+tailnet-only services never appear in public DNS
+the fleet gateway routes prompt scans through one binary
+exit nodes are region-tagged us and eu
+markdown tables in the report use pipe separators
+code fences in transcripts confuse naive regex line splitting — engine handles it
+json payloads from webhooks are scanned line-by-line like any text
+csv exports with credential columns must go through the dlp redactor
+the summary report prints rule id and fingerprint, never the value
