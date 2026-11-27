@@ -76,10 +76,26 @@ PATCHES: dict[str, list[tuple[str, str]]] = {
         (r"[\w$@.-]+", r"[\w@.-]+"),
         (r"[\w${}@.-]+", r"[\w@.-]+"),
     ],
+    # batch-2 FP: the loose [\w.=-]{10,150} value charset matched dotted
+    # env-var references (process.env.X, secrets.env) and bare keyword
+    # fragments (github_pat_ as an 11-char "value"). Dots excluded, minimum
+    # raised to 25, and secret_group=1 added so the entropy gate applies to
+    # the captured value instead of the keyword-laden whole match.
+    "generic-api-key": [
+        (r"[\w.=-]{10,150}", r"[\w=-]{25,150}"),
+    ],
 }
 
 # TOML comment emitted above each patched block — documents the tightening
 # in the generated file and marks it as converter-carried.
+# Patch-imposed secret_group per upstream rule id: applied only when upstream
+# did not set one. generic-api-key's group 1 is the value charset, so the
+# scanner's entropy gate (and reported value) applies to the credential
+# instead of the keyword-laden whole match.
+PATCH_SECRET_GROUP: dict[str, int] = {
+    "generic-api-key": 1,
+}
+
 PATCH_COMMENTS: dict[str, str] = {
     "aws-amazon-bedrock-api-key-short-lived": (
         "# [Y] one-char class: identical match semantics; patch carried by the\n"
@@ -90,6 +106,13 @@ PATCH_COMMENTS: dict[str, str] = {
         "# FP tightening carried by the converter (benign-corpus pass 2026-11-27):\n"
         "# $ excluded from credential slots so env-var reference forms\n"
         '# (curl -u "$USER:$PASS") never fire'
+    ),
+    "generic-api-key": (
+        "# FP tightening carried by the converter (benign-corpus batch-2 pass):\n"
+        "# dots excluded from the value charset (dotted env-var references like\n"
+        "# process.env.X never match), value minimum raised 10 -> 25, and\n"
+        "# secret_group=1 set so the entropy gate applies to the captured value,\n"
+        "# not the keyword-laden whole match"
     ),
 }
 
@@ -213,6 +236,8 @@ def main() -> int:
             rule_lines.append("keywords = [" + ", ".join(f'"{k}"' for k in kws) + "]")
         if r.get("secretGroup"):
             rule_lines.append(f"secret_group = {r['secretGroup']}")
+        elif rid in PATCH_SECRET_GROUP:
+            rule_lines.append(f"secret_group = {PATCH_SECRET_GROUP[rid]}")
         comment = PATCH_COMMENTS.get(rid, "")
         block_prefix = comment + "\n" if comment else ""
         ported.append(block_prefix + "[[rules]]\n" + "\n".join(rule_lines) + "\n")

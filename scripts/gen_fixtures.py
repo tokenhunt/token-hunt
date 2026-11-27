@@ -89,7 +89,7 @@ def _category_pool(category) -> str:
 def _char_for_in_item(rng: random.Random, op, av) -> str:
     if op is sre_constants.LITERAL:
         ch = chr(av)
-        return "?" if ch in NEWLINES else ch
+        return "?" if ch in NEWLINES else ch  # newline would split the line scan
     if op is sre_constants.RANGE:
         lo, hi = av
         return _range_char(rng, chr(lo), chr(hi))
@@ -99,6 +99,17 @@ def _char_for_in_item(rng: random.Random, op, av) -> str:
             raise Unsupported(f"category escape {av!r} inside char class")
         return _pick(rng, pool)
     raise Unsupported(f"{op!r} inside char class")
+
+
+def _in_item_weight(op, av) -> int:
+    # weight class items by their char-set size so chars are drawn ~uniformly
+    # over the class — uniform item choice would make [\w-] 50% dashes and
+    # sink entropy-gated rules below their thresholds
+    if op is sre_constants.RANGE:
+        return min(max(av[1] - av[0] + 1, 1), 512)
+    if op is sre_constants.CATEGORY:
+        return len(_category_pool(av)) or 1
+    return 1  # LITERAL and anything else
 
 
 def _sample(rng: random.Random, parsed, depth: int = 0) -> str:
@@ -119,7 +130,8 @@ def _sample(rng: random.Random, parsed, depth: int = 0) -> str:
             negate = any(iop is sre_constants.NEGATE for iop, _ in av)
             if negate:
                 raise Unsupported("negated character class")
-            out.append(_char_for_in_item(rng, *rng.choice(av)))
+            items = rng.choices(av, weights=[_in_item_weight(iop, iav) for iop, iav in av])[0]
+            out.append(_char_for_in_item(rng, *items))
         elif op is sre_constants.CATEGORY:
             pool = _category_pool(av)
             if not pool:

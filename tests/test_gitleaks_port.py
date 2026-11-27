@@ -18,95 +18,96 @@ CASES = [
     (
         "gitleaks-1password-secret-key",
         (
-            'A3-_KEY=A3-MG182'
-            'J-W8T00DH6YW3-51'
-            '9B7-Y881Z-XR9H1'
+            'A3-_KEY=A3-YNQSD'
+            'X-3M370BFHIYW-6M'
+            'DYS-4Y8PW-E18Z3'
         ),
         (
-            'A3-_KEY=A3-MG182'
-            'J-W8T00DH6YW3-51'
-            '9B7-Y881Z'
+            'A3-_KEY=A3-YNQSD'
+            'X-3M370BFHIYW-6M'
+            'DYS-4Y8PW'
         ),
     ),
     (
         "gitleaks-1password-service-account-token",
         (
             'OPS__KEY=ops_eyJ'
-            'I/r1Y++Jd8/5YDx/'
-            'X+Y1/+Ia+94I//+/'
-            '+M0iK+2s++woO//y'
-            'w/++++hi+a+/ix+/'
-            'o+//1P+/Yz9+/+Z/'
-            'I+Tm//+7i++OG7+N'
-            '++/W71+/b+0+l969'
-            '3+F//0N/6+7//+7+'
-            'Qq/z6/Y+5W0T/XCk'
-            '++n+/Xy////jke/+'
-            '+++i1gJ+/4K+1+O+'
-            '+/x0/9BDTZ2/JoT/'
-            'Ew/Z/eo/D+X/65H9'
-            '+46Yy++7/++1+/6/'
-            'p+/z/c4+82MkoU/A'
-            'p/+5y/Gs+x='
+            'IR1mHdJULyaY+oit'
+            '2b7jfrYE6Lioe/mB'
+            'OtYtxCazmIx8OQDp'
+            'ZaTTFFhUqLI6OgUn'
+            '6nWkxqBJpkIJ9zer'
+            'JgJYOOp2WQZvHZfV'
+            'gHCo1MXDT8JKePXC'
+            'cfx4hlnX2MQXaS0f'
+            '2FJeScUy+DuqdXYk'
+            'G3YuM5mc6OU6Dvu6'
+            '0XZD5/+Yk2a0U3p+'
+            'KyHsxG+jBexfasIn'
+            'FIZ0mu4oZyni0AUI'
+            'oP9GlpqtF9krqc4y'
+            'NK90rZcuU2cnX60V'
+            'xcCYkwAu/R'
         ),
         (
             'OPS__KEY=ops_eyJ'
-            'I/r1Y++Jd8/5YDx/'
-            'X+Y1/+Ia+94I//+/'
-            '+M0iK+2s++woO//y'
-            'w/++++hi+a+/ix+/'
-            'o+//1P+/Yz9+/+Z/'
-            'I+Tm//+7i++OG7+N'
-            '++/W71+/b+0+l969'
-            '3+F//0N/6+7//+7+'
-            'Qq/z6/Y+5W0T/XCk'
-            '++n+/Xy////jke/+'
-            '+++i1gJ+/4K+1+O+'
-            '+/x0/9BDTZ2/JoT/'
-            'Ew/Z/eo/D+X/65H9'
-            '+46Yy'
+            'IR1mHdJULyaY+oit'
+            '2b7jfrYE6Lioe/mB'
+            'OtYtxCazmIx8OQDp'
+            'ZaTTFFhUqLI6OgUn'
+            '6nWkxqBJpkIJ9zer'
+            'JgJYOOp2WQZvHZfV'
+            'gHCo1MXDT8JKePXC'
+            'cfx4hlnX2MQXaS0f'
+            '2FJeScUy+DuqdXYk'
+            'G3YuM5mc6OU6Dvu6'
+            '0XZD5/+Yk2a0U3p+'
+            'KyHsxG+jBexfasIn'
+            'FIZ0mu4oZyni0AUI'
+            'oP9G'
         ),
     ),
     (
         "gitleaks-adafruit-api-key",
         (
-            'ADAFRUIT_KEY=c..'
-            '.adafruit\tB==2_-'
-            '_o206_1-__o90__o'
-            '_o_9f__z42_-9;'
+            'ADAFRUIT_KEY=tqv'
+            "ladafruitHo_KC'="
+            '=esic4bwtt0ts1lk'
+            'su40_i8-vqe9whq5'
+            "f'"
         ),
         (
-            'ADAFRUIT_KEY=c..'
-            '.adafruit\tB==2_-'
-            '_o206_1-__o90__o'
-            '_o_9f_'
+            'ADAFRUIT_KEY=tqv'
+            "ladafruitHo_KC'="
+            '=esic4bwtt0ts1lk'
+            'su40_i8-v'
         ),
     ),
     (
         "gitleaks-adobe-client-id",
         (
-            "ADOBE_KEY=adobe'"
-            ' =11e34fa179fd6e'
-            'e48e640872ea7199'
-            '43;'
+            'ADOBE_KEY=adobe '
+            ' =`= e4fdde89d98'
+            '48e57dc72bd159d4'
+            '9dbdb`'
         ),
         (
-            "ADOBE_KEY=adobe'"
-            ' =11e34fa179fd6e'
-            'e48e640872ea'
+            'ADOBE_KEY=adobe '
+            ' =`= e4fdde89d98'
+            '48e57dc72bd159d'
         ),
     ),
     (
         "gitleaks-adobe-client-secret",
         (
-            'P8E-_KEY=p8e-c35'
-            'pmxr30f842ce5j20'
-            '6e45zc55n725u '
+            'P8E-_KEY=p8e-ngw'
+            'pda8mseqiv1e5p20'
+            "neqov5zixfpu2'"
         ),
         (
-            'P8E-_KEY=p8e-c35'
-            'pmxr30f842ce5j20'
-            '6e45zc55'
+            'P8E-_KEY=p8e-ngw'
+            'pda8mseqiv1e5p20'
+            'neqov5zi'
         ),
     ),
     (
@@ -114,93 +115,93 @@ CASES = [
         (
             'AGE-SECRET-KEY-1'
             '_KEY=AGE-SECRET-'
-            'KEY-1EUEG9CFVPXL'
-            'RY3M906GYD40THHP'
-            'ZSGWWS2F5DF8SFF7'
-            'Y889XRUCDDXAXMY'
+            'KEY-1LNWVYZVNQR0'
+            '4ZU3UZDZX8MTQLA8'
+            'CC4JY2L4URUYY0MC'
+            'RRRWSVCJSUXKCR6'
         ),
         (
             'AGE-SECRET-KEY-1'
             '_KEY=AGE-SECRET-'
-            'KEY-1EUEG9CFVPXL'
-            'RY3M906GYD40THHP'
-            'ZSGWWS2F5DF8SFF7'
-            'Y8'
+            'KEY-1LNWVYZVNQR0'
+            '4ZU3UZDZX8MTQLA8'
+            'CC4JY2L4URUYY0MC'
+            'RR'
         ),
     ),
     (
         "gitleaks-airtable-api-key",
         (
-            'AIRTABLE_KEY=-.N'
-            '--.airtablea  "='
-            '`iz93c4o7f1c5370'
-            "ht'"
+            'AIRTABLE_KEY=AHy'
+            'v4MairtableojOmN'
+            '-\t=7ick5ob38e6gc'
+            'o44s"'
         ),
         (
-            'AIRTABLE_KEY=-.N'
-            '--.airtablea  "='
-            '`iz93c4o7f1c'
+            'AIRTABLE_KEY=AHy'
+            'v4MairtableojOmN'
+            '-\t=7ick5ob38e6'
         ),
     ),
     (
         "gitleaks-airtable-personnal-access-token",
         (
             'AIRTABLE_KEY=pat'
-            'tzCbw1REk0RFtt.0'
-            '3ccd5c56d3d8afde'
-            'cec7aafcec7de456'
-            '18aa64dd23858dcc'
-            '9914981775faeb2'
+            'Yn0d8eHu8FsfQW.4'
+            'a93c36381f783a35'
+            'd2fb0ec7704cd1f0'
+            '1d47d6ed79be9148'
+            '81775bee2f712ae'
         ),
         (
             'AIRTABLE_KEY=pat'
-            'tzCbw1REk0RFtt.0'
-            '3ccd5c56d3d8afde'
-            'cec7aafcec7de456'
-            '18aa64dd23858dcc'
-            '99'
+            'Yn0d8eHu8FsfQW.4'
+            'a93c36381f783a35'
+            'd2fb0ec7704cd1f0'
+            '1d47d6ed79be9148'
+            '81'
         ),
     ),
     (
         "gitleaks-algolia-api-key",
         (
-            'ALGOLIA_KEY=V0-a'
-            'lgolia\t"=th8ychi'
-            'j66116to6u0rr1m2'
-            'b61hqlcfj`'
+            'ALGOLIA_KEY=mgwa'
+            'lgoliaZ=y38qytt4'
+            'in7c5891mlex861j'
+            'fy5d3bew`'
         ),
         (
-            'ALGOLIA_KEY=V0-a'
-            'lgolia\t"=th8ychi'
-            'j66116to6u0rr1m2'
-            'b6'
+            'ALGOLIA_KEY=mgwa'
+            'lgoliaZ=y38qytt4'
+            'in7c5891mlex861j'
+            'f'
         ),
     ),
     (
         "gitleaks-alibaba-access-key-id",
         (
-            'LTAI_KEY=LTAIpa7'
-            'oqa9yju8xvn733o2'
-            "7'"
+            'LTAI_KEY=LTAI7q5'
+            'dq3tya4hi9gnpwbl'
+            '5"'
         ),
         (
-            'LTAI_KEY=LTAIpa7'
-            'oqa9yju8xvn733'
+            'LTAI_KEY=LTAI7q5'
+            'dq3tya4hi9gnpw'
         ),
     ),
     (
         "gitleaks-alibaba-secret-key",
         (
-            'ALIBABA_KEY=.--2'
-            'alibaba\t\t"""=`"q'
-            'lxdqo06k6ch7s80v'
-            't4zxtwua26220"'
+            'ALIBABA_KEY=O.hS'
+            'alibabalLhxG = `'
+            'o4s0numf87lftjzf'
+            '9w9dfvpbeahl7p '
         ),
         (
-            'ALIBABA_KEY=.--2'
-            'alibaba\t\t"""=`"q'
-            'lxdqo06k6ch7s80v'
-            't4zxtw'
+            'ALIBABA_KEY=O.hS'
+            'alibabalLhxG = `'
+            'o4s0numf87lftjzf'
+            '9w9dfv'
         ),
     ),
     (
@@ -208,169 +209,170 @@ CASES = [
         (
             'SK-ANT-ADMIN01_K'
             'EY=sk-ant-admin0'
-            '1-4_i26__rLT_N49'
-            'D_N16_W__2K-_B8h'
-            '8BV_7-J_2uB-O--_'
-            '9PHbDCQQ1_8_S6_D'
-            '-77f_c_w_Cw3_60-'
-            's_0n-7t_20a_M-6A'
-            'A;'
+            '1-j-ky6AXlTnj9DE'
+            '4K7wJx_KEq3q2e75'
+            'SofustYSpb_dhQJC'
+            '5_NHYyDKOmo6dYn-'
+            'Yws9Wa6SwmxZb6sr'
+            'yT0f7kcpIby9sYLA'
+            'A\t'
         ),
         (
             'SK-ANT-ADMIN01_K'
             'EY=sk-ant-admin0'
-            '1-4_i26__rLT_N49'
-            'D_N16_W__2K-_B8h'
-            '8BV_7-J_2uB-O--_'
-            '9PHbDCQQ1_8_S6_D'
-            '-77f_c_w_Cw3_60-'
+            '1-j-ky6AXlTnj9DE'
+            '4K7wJx_KEq3q2e75'
+            'SofustYSpb_dhQJC'
+            '5_NHYyDKOmo6dYn-'
+            'Yws9Wa6SwmxZb6sr'
         ),
     ),
     (
         "gitleaks-anthropic-api-key",
         (
             'SK-ANT-API03_KEY'
-            '=sk-ant-api03--3'
-            'MTM--D_-3-K-x--D'
-            'GbPC-c-X-E_5--To'
-            '1r-5_V__-2--_Zt_'
-            '8Ln__X_r49HY__s-'
-            '--3G6c2pp_dc----'
-            'p3-l_9_-J_rAA"'
+            '=sk-ant-api03-Ke'
+            'fMUxtHKWsE2bvW19'
+            'xQsEL9GACspoSrHB'
+            'LEnGNuiEyXSWY3GJ'
+            'BkppPdc_TD-UHLTE'
+            'pk1SDOoG4YaVS_nv'
+            'ZRYwKmvdIWEAA;'
         ),
         (
             'SK-ANT-API03_KEY'
-            '=sk-ant-api03--3'
-            'MTM--D_-3-K-x--D'
-            'GbPC-c-X-E_5--To'
-            '1r-5_V__-2--_Zt_'
-            '8Ln__X_r49HY__s-'
-            '--3G6c2pp_dc'
+            '=sk-ant-api03-Ke'
+            'fMUxtHKWsE2bvW19'
+            'xQsEL9GACspoSrHB'
+            'LEnGNuiEyXSWY3GJ'
+            'BkppPdc_TD-UHLTE'
+            'pk1SDOoG4YaV'
         ),
     ),
     (
         "gitleaks-artifactory-api-key",
         (
-            'AKCP_KEY=AKCpTj0'
-            'Ax2cw1cQuTHcUdgY'
-            'L8muT6WP2v8b0uG7'
-            '84pPcA0U97i4GNTS'
-            '8nwsd1NZAmPh6wVp'
-            'XE'
+            'AKCP_KEY=AKCpZjb'
+            'ZxfMuC2u9NUPYU4L'
+            'tnBevo01UrpfcWYV'
+            'wi4Atso7siUNzA5P'
+            'SWNyxK8cfrhinPfF'
+            '2J'
         ),
         (
-            'AKCP_KEY=AKCpTj0'
-            'Ax2cw1cQuTHcUdgY'
-            'L8muT6WP2v8b0uG7'
-            '84pPcA0U97i4GNTS'
-            '8nwsd1N'
+            'AKCP_KEY=AKCpZjb'
+            'ZxfMuC2u9NUPYU4L'
+            'tnBevo01UrpfcWYV'
+            'wi4Atso7siUNzA5P'
+            'SWNyxK8'
         ),
     ),
     (
         "gitleaks-artifactory-reference-token",
         (
-            'CMVMD_KEY=cmVmdC'
-            'AWDGD41yYEt41gF0'
-            'L1B58fyjthl6dGHr'
-            '1FomM6QASiF21N4D'
-            'r0W16756Gv'
+            'CMVMD_KEY=cmVmdG'
+            'WdCJky2wYvGQLh5n'
+            'YJ93soGHUFLM6DCi'
+            'TRh4OaWd6zv6g6py'
+            'imqz2eaSmD'
         ),
         (
-            'CMVMD_KEY=cmVmdC'
-            'AWDGD41yYEt41gF0'
-            'L1B58fyjthl6dGHr'
-            '1FomM6QASiF21N4D'
+            'CMVMD_KEY=cmVmdG'
+            'WdCJky2wYvGQLh5n'
+            'YJ93soGHUFLM6DCi'
+            'TRh4OaWd6zv6g6py'
         ),
     ),
     (
         "gitleaks-asana-client-id",
         (
-            'ASANA_KEY=asana-'
-            '\t=" 124724487957'
-            "5776'"
+            'ASANA_KEY=asanaX'
+            '-\'=="72404487395'
+            '27573;'
         ),
         (
-            'ASANA_KEY=asana-'
-            '\t=" 124724487957'
+            'ASANA_KEY=asanaX'
+            '-\'=="72404487395'
+            '2'
         ),
     ),
     (
         "gitleaks-asana-client-secret",
         (
-            'ASANA_KEY=54-.U.'
-            'asana\t \t==``9kx4'
-            '32eduh8n8y53r0y0'
-            '0g8ma59gon56;'
+            'ASANA_KEY=ouUp48'
+            'asanaitX8=9eg4ge'
+            'sy1yl2rrsmr0p5gy'
+            'i8el9xg1u5\t'
         ),
         (
-            'ASANA_KEY=54-.U.'
-            'asana\t \t==``9kx4'
-            '32eduh8n8y53r0y0'
-            '0g8ma'
+            'ASANA_KEY=ouUp48'
+            'asanaitX8=9eg4ge'
+            'sy1yl2rrsmr0p5gy'
+            'i8e'
         ),
     ),
     (
         "gitleaks-atlassian-api-token",
         (
-            'ATLASSIAN_KEY=Y-'
-            '.3ATLASSIANjo  "'
-            '""="\'`975fc149o0'
-            "52eb1o4fov2905'"
+            'ATLASSIAN_KEY=Ua'
+            "MuATLASSIAN\t=\t='"
+            's75fv0vjyc708522'
+            '3vbib116;'
         ),
         (
-            'ATLASSIAN_KEY=Y-'
-            '.3ATLASSIANjo  "'
-            '""="\'`975fc149o0'
-            '52eb1o'
+            'ATLASSIAN_KEY=Ua'
+            "MuATLASSIAN\t=\t='"
+            's75fv0vjyc708522'
+            '3'
         ),
     ),
     (
         "gitleaks-authress-service-client-access-key",
         (
-            'SC__KEY=sc_40dw6'
-            '.9335yh.acc_15-8'
-            '-7g48-.+-/+w-_-='
-            '==-8=7qb+/=+l-_c'
-            '_+-/h '
+            'SC__KEY=sc_lzxjt'
+            '.xpo7y.acc-jm9vv'
+            'gi8dm.zx3-7an4zc'
+            'yhy0d7i2u6gqmmhd'
+            '3gp5\t'
         ),
         (
-            'SC__KEY=sc_40dw6'
-            '.9335yh.acc_15-8'
-            '-7g48-.+-/+w-_-='
-            '==-8=7qb+/=+'
+            'SC__KEY=sc_lzxjt'
+            '.xpo7y.acc-jm9vv'
+            'gi8dm.zx3-7an4zc'
+            'yhy0d7i2u6gq'
         ),
     ),
     (
         "gitleaks-aws-access-token",
         (
-            'A3T_KEY=A3TL52P3'
-            '4J64OSWWE5QM'
+            'A3T_KEY=A3TCJCW5'
+            'UJPLZQ23WPFQ'
         ),
         (
-            'A3T_KEY=A3TL52P3'
-            '4J64OSWW'
+            'A3T_KEY=A3TCJCW5'
+            'UJPLZQ23'
         ),
     ),
     (
         "gitleaks-aws-amazon-bedrock-api-key-long-lived",
         (
-            'ABSK_KEY=ABSKz+s'
-            '5/ZPsR/0S/946m29'
-            '+02f/7+/2/15r60Z'
-            'sy6+4+/l2/sQ+Z++'
-            'Q+x5E5u19dnL3/+/'
-            'l//y++JU/181+V9/'
-            'mC8/j+/r++/WRe+/'
-            '7w3+/L9//+"'
+            'ABSK_KEY=ABSK3zK'
+            'A0sTClj4mJIlZFpS'
+            'vr1WrJzC2y6W4P+l'
+            'U8SNY7QxBKZITwDA'
+            'H7ltrymAq1QC0itm'
+            '0YSjyeoQw0fTGjnl'
+            'TbB3MckvPW/Om5Bg'
+            'zZW5wBVn0P`'
         ),
         (
-            'ABSK_KEY=ABSKz+s'
-            '5/ZPsR/0S/946m29'
-            '+02f/7+/2/15r60Z'
-            'sy6+4+/l2/sQ+Z++'
-            'Q+x5E5u19dnL3/+/'
-            'l//y++JU/181+V9/'
-            'mC8/j+/r++'
+            'ABSK_KEY=ABSK3zK'
+            'A0sTClj4mJIlZFpS'
+            'vr1WrJzC2y6W4P+l'
+            'U8SNY7QxBKZITwDA'
+            'H7ltrymAq1QC0itm'
+            '0YSjyeoQw0fTGjnl'
+            'TbB3MckvPW'
         ),
     ),
     (
@@ -392,540 +394,1374 @@ CASES = [
     (
         "gitleaks-azure-ad-client-secret",
         (
-            'Q~_KEY=.8.2Q~.v.'
-            '-__-__.r._~i~~--'
-            'hon.~61-.Xtl'
+            'Q~_KEY=JUV5Q~PZU'
+            'xAq0ouNzXde.gTP-'
+            'QO-tQgARbx73'
         ),
         (
-            'Q~_KEY=.8.2Q~.v.'
-            '-__-__.r._~i~~--'
-            'hon.~6'
+            'Q~_KEY=JUV5Q~PZU'
+            'xAq0ouNzXde.gTP-'
+            'QO-tQg'
         ),
     ),
     (
         "gitleaks-beamer-api-token",
         (
-            'BEAMER_KEY=.Km.G'
-            '.beamerH-\'"=\'"`"'
-            'b_c_=-_6rl_131_-'
-            '_8rj_1==_w_-=7=_'
-            '=8-l3===_=_7_="'
+            'BEAMER_KEY=-K.sF'
+            'xbeamer-Dp1\'"==`'
+            '\t\t=b_ranch3192yc'
+            '735m74x_n3whx5kz'
+            'yblixrcdzi2ae-56'
+            'o"'
         ),
         (
-            'BEAMER_KEY=.Km.G'
-            '.beamerH-\'"=\'"`"'
-            'b_c_=-_6rl_131_-'
-            '_8rj_1==_w_-=7=_'
-            '=8-l'
+            'BEAMER_KEY=-K.sF'
+            'xbeamer-Dp1\'"==`'
+            '\t\t=b_ranch3192yc'
+            '735m74x_n3whx5kz'
+            'yblixrc'
         ),
     ),
     (
         "gitleaks-bitbucket-client-id",
         (
-            'BITBUCKET_KEY=.b'
-            'itbucket J..H""\''
-            "=`'47dp0ty0h3yc1"
-            'vwte43nx201zh97p'
-            "3dx'"
+            'BITBUCKET_KEY=Sb'
+            'itbucket\'\'=\'"\tiz'
+            '7u7ah02g9t10jvbe'
+            'yxrrm6a111wrw3"'
         ),
         (
-            'BITBUCKET_KEY=.b'
-            'itbucket J..H""\''
-            "=`'47dp0ty0h3yc1"
-            'vwte43nx201'
+            'BITBUCKET_KEY=Sb'
+            'itbucket\'\'=\'"\tiz'
+            '7u7ah02g9t10jvbe'
+            'yxrrm6'
         ),
     ),
     (
         "gitleaks-bitbucket-client-secret",
         (
-            'BITBUCKET_KEY=--'
-            'Svbitbucket\t"=9z'
-            '-_-2yh-z__40u==='
-            '=-59===1=2-==_--'
-            '__1_-7-l=-=2=__-'
-            'o--7-_-c=-=-7_;'
+            'BITBUCKET_KEY=Mj'
+            'erbitbucketb= e0'
+            'a7ib=4uus5t4w2jw'
+            '-z9-61uqzkzm69ro'
+            'v1xxwqhyt764qtgy'
+            '=e7rf-6q_fi3qs;'
         ),
         (
-            'BITBUCKET_KEY=--'
-            'Svbitbucket\t"=9z'
-            '-_-2yh-z__40u==='
-            '=-59===1=2-==_--'
-            '__1_-7-l=-=2=__-'
-            'o-'
+            'BITBUCKET_KEY=Mj'
+            'erbitbucketb= e0'
+            'a7ib=4uus5t4w2jw'
+            '-z9-61uqzkzm69ro'
+            'v1xxwqhyt764qtgy'
+            '=e'
         ),
     ),
     (
         "gitleaks-bittrex-access-key",
         (
-            'BITTREX_KEY=-.bi'
-            'ttrex \t\t=c829re1'
-            'nj20lj82g5a9l34i'
-            'au84c3o99`'
+            'BITTREX_KEY=ivbi'
+            'ttrex  =fsd9lrnx'
+            'xejrfiazbhh1x2wp'
+            "lczo4ti8'"
         ),
         (
-            'BITTREX_KEY=-.bi'
-            'ttrex \t\t=c829re1'
-            'nj20lj82g5a9l34i'
-            'au'
+            'BITTREX_KEY=ivbi'
+            'ttrex  =fsd9lrnx'
+            'xejrfiazbhh1x2wp'
+            'l'
         ),
     ),
     (
         "gitleaks-bittrex-secret-key",
         (
-            'BITTREX_KEY=--eb'
-            'ittrex\t"=\'\'e9esn'
-            'hrrq24wh2z7n7776'
-            "d0f19qp82as'"
+            'BITTREX_KEY=hmGb'
+            'ittrexm =\tbngfg2'
+            'osj9hf7rook1ay8p'
+            '9q78udg325\t'
         ),
         (
-            'BITTREX_KEY=--eb'
-            'ittrex\t"=\'\'e9esn'
-            'hrrq24wh2z7n7776'
-            'd0f1'
+            'BITTREX_KEY=hmGb'
+            'ittrexm =\tbngfg2'
+            'osj9hf7rook1ay8p'
+            '9q7'
         ),
     ),
     (
         "gitleaks-cisco-meraki-api-key",
         (
-            'MERAKI_KEY=-.0VR'
-            'meraki E.- S ==`'
-            '`e66f13a2bce74c9'
-            '1ef5e7d6fb7b1b9d'
-            'e5afe6481 '
+            'MERAKI_KEY=7oRux'
+            ".e-Merakib'\t'=`="
+            '"e5b2c24c25040d8'
+            'd933f5fa60f5edf1'
+            '1169a7670;'
         ),
         (
-            'MERAKI_KEY=-.0VR'
-            'meraki E.- S ==`'
-            '`e66f13a2bce74c9'
-            '1ef5e7d6fb7b1b9d'
+            'MERAKI_KEY=7oRux'
+            ".e-Merakib'\t'=`="
+            '"e5b2c24c25040d8'
+            'd933f5fa60f5edf1'
         ),
     ),
     (
         "gitleaks-clickhouse-cloud-api-secret-key",
         (
-            '4B1D_KEY=4b1dHp7'
-            '5Ybv29UTNAyB4Jp2'
-            '1LllCVbCjCN8M9yz'
-            '8aK'
+            '4B1D_KEY=4b1dhUr'
+            '3buYuTNIb4NxCKL1'
+            '3bLCNeSYTyaB1x1r'
+            'n7n'
         ),
         (
-            '4B1D_KEY=4b1dHp7'
-            '5Ybv29UTNAyB4Jp2'
-            '1LllCVbCjCN8'
+            '4B1D_KEY=4b1dhUr'
+            '3buYuTNIb4NxCKL1'
+            '3bLCNeSYTyaB'
         ),
     ),
     (
         "gitleaks-clojars-api-token",
         (
             'CLOJARS__KEY=CLO'
-            'JARS_5ch6uf568c7'
-            'ko6o61i8jgyoc152'
-            '2286r03n64x52v06'
-            'tjp8l8gfhx6e11jy'
-            '2'
+            'JARS_mc3n1fmmco5'
+            'nomc44jggxdckler'
+            'ebrfiji4c7i1hp6l'
+            '6s3fd62cveylk9zp'
+            '6'
         ),
         (
             'CLOJARS__KEY=CLO'
-            'JARS_5ch6uf568c7'
-            'ko6o61i8jgyoc152'
-            '2286r03n64x52v06'
-            'tjp8l8'
+            'JARS_mc3n1fmmco5'
+            'nomc44jggxdckler'
+            'ebrfiji4c7i1hp6l'
+            '6s3fd6'
         ),
     ),
     (
         "gitleaks-cloudflare-api-key",
         (
-            'CLOUDFLARE_KEY=s'
-            '-lI..cloudflare\t'
-            '"\'= 3-_y_5-d_-6_'
-            '_-1-ip_49__9ixb_'
-            'vm671_9-c5_t\t'
+            'CLOUDFLARE_KEY=T'
+            'e_kSBcloudflareo'
+            '\t=3z1xoxmx_9d_1p'
+            '8824sxtc1vdm6o1h'
+            'c3qwtkvwcc;'
         ),
         (
-            'CLOUDFLARE_KEY=s'
-            '-lI..cloudflare\t'
-            '"\'= 3-_y_5-d_-6_'
-            '_-1-ip_49__9ixb_'
-            'vm'
+            'CLOUDFLARE_KEY=T'
+            'e_kSBcloudflareo'
+            '\t=3z1xoxmx_9d_1p'
+            '8824sxtc1vdm6o1h'
+            'c'
         ),
     ),
     (
         "gitleaks-cloudflare-global-api-key",
         (
-            'CLOUDFLARE_KEY=.'
-            '-4.-cloudflare=\t'
-            '\'"=6dfb00c8a5f6f'
-            'ac616efd43270ab5'
-            '172e8596"'
+            'CLOUDFLARE_KEY=B'
+            '4eIPcloudflareK '
+            ' =  \t``150501bd7'
+            '409075ddf788acc7'
+            '3785e69c9a2e\t'
         ),
         (
-            'CLOUDFLARE_KEY=.'
-            '-4.-cloudflare=\t'
-            '\'"=6dfb00c8a5f6f'
-            'ac616efd43270ab'
+            'CLOUDFLARE_KEY=B'
+            '4eIPcloudflareK '
+            ' =  \t``150501bd7'
+            '409075ddf788acc7'
+            '37'
         ),
     ),
     (
         "gitleaks-cloudflare-origin-ca-key",
         (
             'CLOUDFLARE_KEY=v'
-            '1.0-38cfa06f030b'
-            '0ee1ecdae300-2bc'
-            'cf27621ffccbdeda'
-            'cff81b7bbc92db6a'
-            'e20e88cfdaf6ea4c'
-            '64bb72ff0cab148b'
-            '41bdd055bb0c6bf8'
-            'ea880031e202b8bf'
-            '19cf5a1c7b458f9e'
-            'dc84bb95a86cccb3'
-            "ac21ec423e40fba'"
+            '1.0-38e930a6303a'
+            '2c39e1bdb83d-5ba'
+            'e07699564ae12c2a'
+            '26bb481097ac82ad'
+            '90e29368e9432a49'
+            'a4c659bd124cba48'
+            '24ae8a0454ab0f20'
+            '8f8a984ba200e3fc'
+            '8b7a1c0fd4609be5'
+            '1b245186f2cdaf6f'
+            "a0c2b884012ba04'"
         ),
         (
             'CLOUDFLARE_KEY=v'
-            '1.0-38cfa06f030b'
-            '0ee1ecdae300-2bc'
-            'cf27621ffccbdeda'
-            'cff81b7bbc92db6a'
-            'e20e88cfdaf6ea4c'
-            '64bb72ff0cab148b'
-            '41bdd055bb0c6bf8'
-            'ea880031e202b8bf'
-            '19cf5a1c7b458f9e'
-            'dc84b'
+            '1.0-38e930a6303a'
+            '2c39e1bdb83d-5ba'
+            'e07699564ae12c2a'
+            '26bb481097ac82ad'
+            '90e29368e9432a49'
+            'a4c659bd124cba48'
+            '24ae8a0454ab0f20'
+            '8f8a984ba200e3fc'
+            '8b7a1c0fd4609be5'
+            '1b245'
         ),
     ),
     (
         "gitleaks-codecov-access-token",
         (
-            'CODECOV_KEY=..-a'
-            ".codecov\t  ==`='"
-            '13mn3e9358m6f0if'
-            'tf45shjx31uro419'
-            '\t'
+            'CODECOV_KEY=OabG'
+            'YcodecovIbiH7=`\t'
+            '` 3mgli3k6gxsn2g'
+            'f9kifhgxkucmcput'
+            'v8"'
         ),
         (
-            'CODECOV_KEY=..-a'
-            ".codecov\t  ==`='"
-            '13mn3e9358m6f0if'
-            'tf45shjx'
+            'CODECOV_KEY=OabG'
+            'YcodecovIbiH7=`\t'
+            '` 3mgli3k6gxsn2g'
+            'f9kifhgxku'
         ),
     ),
     (
         "gitleaks-cohere-api-token",
         (
-            'COHERE_KEY=-.coh'
-            'ere c8-L\'\t"=`\tpI'
-            'iR83L989L70Lhu6r'
-            '0992lsHeIgABvD72'
-            '27ivp5`'
+            'COHERE_KEY=b48Lc'
+            'oherebUFUw\t=rQlT'
+            'ZKw7Bbu6wUT2dHmY'
+            'n043NVFEOIgLEZ1t'
+            'pt78;'
         ),
         (
-            'COHERE_KEY=-.coh'
-            'ere c8-L\'\t"=`\tpI'
-            'iR83L989L70Lhu6r'
-            '0992lsHeIgABv'
+            'COHERE_KEY=b48Lc'
+            'oherebUFUw\t=rQlT'
+            'ZKw7Bbu6wUT2dHmY'
+            'n043NVFEOIgL'
         ),
     ),
     (
         "gitleaks-coinbase-access-token",
         (
-            'COINBASE_KEY=-v.'
-            '--.coinbaseG.\t" '
-            '====""ph35wl_1--'
-            '1---_-_23--19j__'
-            '_j-ir5yd_-__98__'
-            '-hrm_l--___4v__i'
-            "8-y-74'"
+            'COINBASE_KEY=v8Y'
+            'uywcoinbaseVWMR='
+            ' "\'  r55cvnlienh'
+            'uakq0uiwrltdy56y'
+            '3e55mxrsljhvdryg'
+            'i8uujwlj_zgfmane'
+            "hso7z'"
         ),
         (
-            'COINBASE_KEY=-v.'
-            '--.coinbaseG.\t" '
-            '====""ph35wl_1--'
-            '1---_-_23--19j__'
-            '_j-ir5yd_-__98__'
-            '-hrm_l--_'
+            'COINBASE_KEY=v8Y'
+            'uywcoinbaseVWMR='
+            ' "\'  r55cvnlienh'
+            'uakq0uiwrltdy56y'
+            '3e55mxrsljhvdryg'
+            'i8uujwlj'
         ),
     ),
     (
         "gitleaks-confluent-access-token",
         (
-            'CONFLUENT_KEY=-.'
-            'dj.confluent-\t\t-'
-            ".='=''=94d5x8nn2"
-            'bzg5134`'
+            'CONFLUENT_KEY=uk'
+            'O8kconfluentJ"\' '
+            '=\'\' "42la486uvt1'
+            "xfkuk'"
         ),
         (
-            'CONFLUENT_KEY=-.'
-            'dj.confluent-\t\t-'
-            ".='=''=94d5x8nn2"
+            'CONFLUENT_KEY=uk'
+            'O8kconfluentJ"\' '
+            '=\'\' "42la486uvt'
         ),
     ),
     (
         "gitleaks-confluent-secret-key",
         (
-            'CONFLUENT_KEY=o-'
-            'c.-.confluent  .'
-            'b. ="xb4807924qm'
-            'uynk93ak1uy15119'
-            '26v5qf907kin25j7'
-            '17o2d040zk9906a5'
-            'q9u7l"'
+            'CONFLUENT_KEY=5c'
+            'SV5yconfluent\t  '
+            "==`=''osyz8ag06c"
+            'spz0nfy4v6j4p68c'
+            'pquy970vkee758vq'
+            '617ofrsm4a0st80a'
+            'jwxujl '
         ),
         (
-            'CONFLUENT_KEY=o-'
-            'c.-.confluent  .'
-            'b. ="xb4807924qm'
-            'uynk93ak1uy15119'
-            '26v5qf907kin25j7'
-            '17o2d040'
+            'CONFLUENT_KEY=5c'
+            'SV5yconfluent\t  '
+            "==`=''osyz8ag06c"
+            'spz0nfy4v6j4p68c'
+            'pquy970vkee758vq'
+            '617ofrsm4'
         ),
     ),
     (
         "gitleaks-contentful-delivery-api-token",
         (
-            'CONTENTFUL_KEY=Y'
-            '-contentful -\t \t'
-            "=' c=-=-==y=t==v"
-            '__t=-_=73-1===--'
-            'm-_9-_-=--2=4=`'
+            'CONTENTFUL_KEY=k'
+            'Pcontentful =`\t`'
+            ' yic4lvw99g7g83l'
+            't69_9qskkpn=n1c4'
+            '_wp27tm3klvb '
         ),
         (
-            'CONTENTFUL_KEY=Y'
-            '-contentful -\t \t'
-            "=' c=-=-==y=t==v"
-            '__t=-_=73-1===--'
-            'm-_9'
+            'CONTENTFUL_KEY=k'
+            'Pcontentful =`\t`'
+            ' yic4lvw99g7g83l'
+            't69_9qskkpn=n1c4'
+            '_w'
         ),
     ),
     (
         "gitleaks-curl-auth-header",
         (
-            'CURL_KEY=curl -H'
+            'CURL_KEY=curl\t-H'
             '="Authorization:'
-            ' Basic //39/5/+='
-            '"'
+            '\tBasic nc7ti4mg"'
         ),
         (
-            'CURL_KEY=curl -H'
+            'CURL_KEY=curl\t-H'
             '="Authorization:'
-            ' Basic //3'
+            '\tBasic nc7'
         ),
     ),
     (
         "gitleaks-databricks-api-token",
         (
-            'DAPI_KEY=dapi984'
-            'eb4a89fd0da0d78a'
-            '8bbdea22fda37"'
+            'DAPI_KEY=dapi787'
+            '12cc69f6e160a6de'
+            '1f31b12bef87d\t'
         ),
         (
-            'DAPI_KEY=dapi984'
-            'eb4a89fd0da0d78a'
-            '8bbdea22'
+            'DAPI_KEY=dapi787'
+            '12cc69f6e160a6de'
+            '1f31b12b'
         ),
     ),
     (
         "gitleaks-datadog-access-token",
         (
             'DATADOG_KEY=data'
-            "dog'= = ''6wsk86"
-            'ty776lc84fpj1ms0'
-            'duxl6i6046iz8444'
-            '80 '
+            'dog\t= ljwuzk86hy'
+            '7pmcqiv2jq5xrndu'
+            "3yqx770jzxf8q4'"
         ),
         (
             'DATADOG_KEY=data'
-            "dog'= = ''6wsk86"
-            'ty776lc84fpj1ms0'
-            'duxl6i6046'
+            'dog\t= ljwuzk86hy'
+            '7pmcqiv2jq5xrndu'
+            '3yqx77'
         ),
     ),
     (
         "gitleaks-defined-networking-api-token",
         (
-            'DNKEY_KEY=dnkeyE'
-            '.-.=\t " `dnkey-e'
-            '=--l-=-5==-__-_d'
-            '_-_==05_m----=__'
-            '6==-d-6-=rw53==3'
-            'm9__-8_=6=x=_p_='
-            '_=5-=6s-_1__5=`'
+            'DNKEY_KEY=dnkeyW'
+            "_NQ   ='dnkey-5v"
+            'w35rn8c6o5al=lqy'
+            'hjt_z3jr-52kczoh'
+            'myvip4_43i-sz-36'
+            'ebcdb8y58a3=3pw9'
+            '64cdr4m7xh4p9`'
         ),
         (
-            'DNKEY_KEY=dnkeyE'
-            '.-.=\t " `dnkey-e'
-            '=--l-=-5==-__-_d'
-            '_-_==05_m----=__'
-            '6==-d-6-=rw53==3'
-            'm9__-8_=6=x=_p_='
+            'DNKEY_KEY=dnkeyW'
+            "_NQ   ='dnkey-5v"
+            'w35rn8c6o5al=lqy'
+            'hjt_z3jr-52kczoh'
+            'myvip4_43i-sz-36'
+            'ebcdb8y58a3=3pw'
         ),
     ),
     (
         "gitleaks-digitalocean-access-token",
         (
             'DOO_V1__KEY=doo_'
-            'v1_0b0bde52d24de'
-            '946bfaf0aefb46d8'
-            'dae4c23feaac5d69'
-            'c2ea5d30db786ebf'
-            'eed '
+            'v1_0b702b5328420'
+            '994d6eaed0aa2d75'
+            '12a943be2211bd29'
+            '53d193c63508adfd'
+            'f1a '
         ),
         (
             'DOO_V1__KEY=doo_'
-            'v1_0b0bde52d24de'
-            '946bfaf0aefb46d8'
-            'dae4c23feaac5d69'
-            'c2ea5d30'
+            'v1_0b702b5328420'
+            '994d6eaed0aa2d75'
+            '12a943be2211bd29'
+            '53d193c6'
         ),
     ),
     (
         "gitleaks-digitalocean-pat",
         (
             'DOP_V1__KEY=dop_'
-            'v1_ba7ced1054d93'
-            '5cb93edbede9648f'
-            '1eab7a2fd7ee2dfd'
-            'a8fd18ecf5ce11e8'
-            "26c'"
+            'v1_b143a277c09d5'
+            '42e3e32093194d31'
+            'ff39871a678e4dfa'
+            '030781582a5c2580'
+            "42a'"
         ),
         (
             'DOP_V1__KEY=dop_'
-            'v1_ba7ced1054d93'
-            '5cb93edbede9648f'
-            '1eab7a2fd7ee2dfd'
-            'a8fd18ec'
+            'v1_b143a277c09d5'
+            '42e3e32093194d31'
+            'ff39871a678e4dfa'
+            '03078158'
         ),
     ),
     (
         "gitleaks-digitalocean-refresh-token",
         (
             'DOR_V1__KEY=dor_'
-            'v1_4f0b8bdfae56f'
-            '837adc8684200e4b'
-            'f4eb362115171c85'
-            'ebbfc63bc683fbfd'
-            '9df`'
+            'v1_43593f8a3114d'
+            '9431d568d6ae2b4e'
+            '2e6211cedac803f9'
+            'c33be658029b47fc'
+            '0fb\t'
         ),
         (
             'DOR_V1__KEY=dor_'
-            'v1_4f0b8bdfae56f'
-            '837adc8684200e4b'
-            'f4eb362115171c85'
-            'ebbfc63b'
+            'v1_43593f8a3114d'
+            '9431d568d6ae2b4e'
+            '2e6211cedac803f9'
+            'c33be658'
         ),
     ),
     (
         "gitleaks-discord-api-token",
         (
-            'DISCORD_KEY=W-v.'
-            'ediscord =\t\t==\tb'
-            'eadf5846be6dc02f'
-            '9a45dc0e6e0ab38b'
-            '06fcffbd9ba20a9b'
-            "3412d158831cc8a'"
+            'DISCORD_KEY=-S3m'
+            "ediscordeLsG  '="
+            '`1766d234673ddfe'
+            'cc6490c68913369d'
+            'd15b92d3026bef5f'
+            '4c01c831450b10e5'
+            '6`'
         ),
         (
-            'DISCORD_KEY=W-v.'
-            'ediscord =\t\t==\tb'
-            'eadf5846be6dc02f'
-            '9a45dc0e6e0ab38b'
-            '06fcffbd9ba20a9b'
-            '341'
+            'DISCORD_KEY=-S3m'
+            "ediscordeLsG  '="
+            '`1766d234673ddfe'
+            'cc6490c68913369d'
+            'd15b92d3026bef5f'
+            '4c01'
         ),
     ),
     (
         "gitleaks-discord-client-id",
         (
-            'DISCORD_KEY=1-C.'
-            'Ediscord \tY   \'"'
-            '=""`153820117241'
-            '260112\t'
+            'DISCORD_KEY=ICEY'
+            'udiscordfhQyv7= '
+            '5312614329321771'
+            '16;'
         ),
         (
-            'DISCORD_KEY=1-C.'
-            'Ediscord \tY   \'"'
-            '=""`153820117241'
+            'DISCORD_KEY=ICEY'
+            'udiscordfhQyv7= '
+            '531261432932'
         ),
     ),
     (
         "gitleaks-discord-client-secret",
         (
             'DISCORD_KEY=disc'
-            'ord-\tE="\'_m8lk0-'
-            'i=6_6_2752jp3_-o'
-            'x_-w2==2_;'
+            "ordwaP'=`'`a91vm"
+            'mxplbpx976ue4=3o'
+            'xymd-g7wfj7\t'
         ),
         (
             'DISCORD_KEY=disc'
-            'ord-\tE="\'_m8lk0-'
-            'i=6_6_2752jp3_-o'
-            'x_'
+            "ordwaP'=`'`a91vm"
+            'mxplbpx976ue4=3o'
+            'xymd'
         ),
     ),
     (
         "gitleaks-doppler-api-token",
         (
             'DP.PT._KEY=dp.pt'
-            '.n0520237vj37blm'
-            '7wt73b4y8uji730o'
-            '6tu5770l1h78'
+            '.nvwrtvi0fhgfhz9'
+            'b5zoenjbh4udp30j'
+            '2u5onh9g4rf3'
         ),
         (
             'DP.PT._KEY=dp.pt'
-            '.n0520237vj37blm'
-            '7wt73b4y8uji730o'
-            '6tu5'
+            '.nvwrtvi0fhgfhz9'
+            'b5zoenjbh4udp30j'
+            '2u5o'
         ),
     ),
     (
         "gitleaks-droneci-access-token",
         (
             'DRONECI_KEY=dron'
-            'eci- .\tp." ="\'=\t'
-            '`2z92xpo32439f0g'
-            '16v6727c9if06865'
-            'p"'
+            'eciynpxNk\t"=\t`"\t'
+            'xdg4zugjatx2ix49'
+            'qn7t76v9cta6o6rl'
+            ' '
         ),
         (
             'DRONECI_KEY=dron'
-            'eci- .\tp." ="\'=\t'
-            '`2z92xpo32439f0g'
-            '16v6727c9'
+            'eciynpxNk\t"=\t`"\t'
+            'xdg4zugjatx2ix49'
+            'qn7t76v9'
         ),
     ),
     (
         "gitleaks-dropbox-api-token",
         (
-            'DROPBOX_KEY=O-k.'
-            '.dropboxh \t\'\'=\'"'
-            '=\t gs41607ggq84e'
-            "4j'"
+            'DROPBOX_KEY=LAuj'
+            "FdropboxQIzcao\t'"
+            '="\t`0y3njeev7r0s'
+            'yvk\t'
         ),
         (
-            'DROPBOX_KEY=O-k.'
-            '.dropboxh \t\'\'=\'"'
-            '=\t gs41607gg'
+            'DROPBOX_KEY=LAuj'
+            "FdropboxQIzcao\t'"
+            '="\t`0y3njeev7'
         ),
     ),
     (
         "gitleaks-dropbox-long-lived-api-token",
         (
-            'DROPBOX_KEY=..-D'
-            "-dropbox. .='  '"
-            '"41llph0m02vAAAA'
-            'AAAAAA7__n_8=r_-'
-            'v=__8f4-1=__=-=-'
-            'z4x==o-=10==_g=_'
-            "1'"
+            'DROPBOX_KEY=wDAB'
+            "OdropboxRWMoo'\t="
+            ' ""xkmjv7xnxy9AA'
+            'AAAAAAAAlqg03its'
+            'qxfb8ordang9du0p'
+            'l5h_fypwyz=wvjd='
+            'odz"'
         ),
         (
-            'DROPBOX_KEY=..-D'
-            "-dropbox. .='  '"
-            '"41llph0m02vAAAA'
-            'AAAAAA7__n_8=r_-'
-            'v=__8f4-1=__=-=-'
-            'z4x='
+            'DROPBOX_KEY=wDAB'
+            "OdropboxRWMoo'\t="
+            ' ""xkmjv7xnxy9AA'
+            'AAAAAAAAlqg03its'
+            'qxfb8ordang9du0p'
+            'l5h_fy'
+        ),
+    ),
+    (
+        "gitleaks-dropbox-short-lived-api-token",
+        (
+            'DROPBOX_KEY=idro'
+            'pbox\t ==\t"`sl.u='
+            '7tiaf9sfqjtjq91c'
+            'd_0cci0vod=43x9l'
+            '1ckdsri3jq2kflaf'
+            'r1m51yby54tu3vv6'
+            'pvnal6vsslhuuh=a'
+            'g6uyy8-mmofbxvk3'
+            'vk7w4=_hz14iovwy'
+            '5c-v9se0m5h0jebi'
+            'mb=_0 '
+        ),
+        (
+            'DROPBOX_KEY=idro'
+            'pbox\t ==\t"`sl.u='
+            '7tiaf9sfqjtjq91c'
+            'd_0cci0vod=43x9l'
+            '1ckdsri3jq2kflaf'
+            'r1m51yby54tu3vv6'
+            'pvnal6vsslhuuh=a'
+            'g6uyy8-mmofbxvk3'
+            'vk7w4=_hz14iovw'
+        ),
+    ),
+    (
+        "gitleaks-duffel-api-token",
+        (
+            'DUFFEL__KEY=duff'
+            'el_test_5-10byop'
+            'ncm7p0yk_z0dwu9x'
+            'weqz4kyqt3mjjd50'
+            'c6b'
+        ),
+        (
+            'DUFFEL__KEY=duff'
+            'el_test_5-10byop'
+            'ncm7p0yk_z0dwu9x'
+            'weqz4kyqt3'
+        ),
+    ),
+    (
+        "gitleaks-dynatrace-api-token",
+        (
+            'DT0C01._KEY=dt0c'
+            '01.ibml3wg5nlcmb'
+            'kkolwjoxdab.du6h'
+            'ejji9fnyocpr6teu'
+            'm32wgvm0rsytwlut'
+            'ev7m3xmah4irieqa'
+            '98a469x5bwbi'
+        ),
+        (
+            'DT0C01._KEY=dt0c'
+            '01.ibml3wg5nlcmb'
+            'kkolwjoxdab.du6h'
+            'ejji9fnyocpr6teu'
+            'm32wgvm0rsytwlut'
+            'ev7m3xmah4iri'
+        ),
+    ),
+    (
+        "gitleaks-easypost-api-token",
+        (
+            'EZAK_KEY=EZAKa89'
+            '01qnvx80zkhg8gui'
+            'k33y2rg0lt2ktk31'
+            'cg78w1lsrguyrra0'
+            '7z5'
+        ),
+        (
+            'EZAK_KEY=EZAKa89'
+            '01qnvx80zkhg8gui'
+            'k33y2rg0lt2ktk31'
+            'cg78w1lsrg'
+        ),
+    ),
+    (
+        "gitleaks-easypost-test-api-token",
+        (
+            'EZTK_KEY=EZTKjb8'
+            'fpft59da0dd6hwy7'
+            'v52rbuoohnq3jc1j'
+            'uacksfzhqvv7oy3t'
+            '59t'
+        ),
+        (
+            'EZTK_KEY=EZTKjb8'
+            'fpft59da0dd6hwy7'
+            'v52rbuoohnq3jc1j'
+            'uacksfzhqv'
+        ),
+    ),
+    (
+        "gitleaks-etsy-access-token",
+        (
+            'ETSY_KEY=X9MxETS'
+            "YAyP='1rheyjlss3"
+            '3f144l0d6d32k1 '
+        ),
+        (
+            'ETSY_KEY=X9MxETS'
+            "YAyP='1rheyjlss3"
+            '3f144l0d6'
+        ),
+    ),
+    (
+        "gitleaks-facebook-access-token",
+        (
+            'FACEBOOK_KEY=371'
+            '234892385644%zf-'
+            'rvuvp56aws9ovehn'
+            'i5zk6ucn;'
+        ),
+        (
+            'FACEBOOK_KEY=371'
+            '234892385644%zf-'
+            'rvuvp56aws9ovehn'
+            'i'
+        ),
+    ),
+    (
+        "gitleaks-facebook-page-access-token",
+        (
+            'EAAM_KEY=EAACur5'
+            '87jkoltf3llx9xcp'
+            'l3934dbg0qdfgtss'
+            'mx739eg88dse9u77'
+            'yhwctyjdyhrlau6a'
+            't3i53jr4o06141eo'
+            'chqe0xh7t8tm9uu7'
+            '0"'
+        ),
+        (
+            'EAAM_KEY=EAACur5'
+            '87jkoltf3llx9xcp'
+            'l3934dbg0qdfgtss'
+            'mx739eg88dse9u77'
+            'yhwctyjdyhrlau6a'
+            't3i53jr4o06141eo'
+            'ch'
+        ),
+    ),
+    (
+        "gitleaks-facebook-secret",
+        (
+            'FACEBOOK_KEY=otW'
+            'IAhfacebookhyYdP'
+            '=""f690fa7717b37'
+            '310d72882513bb11'
+            'ac1;'
+        ),
+        (
+            'FACEBOOK_KEY=otW'
+            'IAhfacebookhyYdP'
+            '=""f690fa7717b37'
+            '310d7288251'
+        ),
+    ),
+    (
+        "gitleaks-fastly-api-token",
+        (
+            'FASTLY_KEY=uRmYd'
+            'lfastlyUm"\t = ="'
+            '38f97o0fhzaan_cq'
+            'y12ds2igbxlamw7z'
+            ' '
+        ),
+        (
+            'FASTLY_KEY=uRmYd'
+            'lfastlyUm"\t = ="'
+            '38f97o0fhzaan_cq'
+            'y12ds2ig'
+        ),
+    ),
+    (
+        "gitleaks-finicity-api-token",
+        (
+            'FINICITY_KEY=Sg9'
+            'finicity\typM\t=`\t'
+            '"=\'829daefdbc876'
+            '3b62454881ab425a'
+            '723\t'
+        ),
+        (
+            'FINICITY_KEY=Sg9'
+            'finicity\typM\t=`\t'
+            '"=\'829daefdbc876'
+            '3b62454881a'
+        ),
+    ),
+    (
+        "gitleaks-finicity-client-secret",
+        (
+            'FINICITY_KEY=fin'
+            'icity1RF\t=\' "u2x'
+            'otcqjls8hghfeyyp'
+            'w;'
+        ),
+        (
+            'FINICITY_KEY=fin'
+            'icity1RF\t=\' "u2x'
+            'otcqjls8hgh'
+        ),
+    ),
+    (
+        "gitleaks-finnhub-access-token",
+        (
+            'FINNHUB_KEY=ShTp'
+            "finnhubu1'='\t''1"
+            '895om8zmj51iydzd'
+            'd2v`'
+        ),
+        (
+            'FINNHUB_KEY=ShTp'
+            "finnhubu1'='\t''1"
+            '895om8zmj51iy'
+        ),
+    ),
+    (
+        "gitleaks-flickr-access-token",
+        (
+            'FLICKR_KEY=1zLfl'
+            'ickr"= \txz385f5b'
+            'cl5f7dxirpwgdb70'
+            'ontlppw8"'
+        ),
+        (
+            'FLICKR_KEY=1zLfl'
+            'ickr"= \txz385f5b'
+            'cl5f7dxirpwgdb70'
+            'o'
+        ),
+    ),
+    (
+        "gitleaks-flutterwave-encryption-key",
+        (
+            'FLWSECK_TEST_KEY'
+            '=FLWSECK_TEST-06'
+            'e429h3bfef'
+        ),
+        (
+            'FLWSECK_TEST_KEY'
+            '=FLWSECK_TEST-06'
+            'e429'
+        ),
+    ),
+    (
+        "gitleaks-flutterwave-public-key",
+        (
+            'FLWPUBK_TEST_KEY'
+            '=FLWPUBK_TEST-14'
+            'e29d976c257gc6d6'
+            'g28aag1h0bhe66-X'
+        ),
+        (
+            'FLWPUBK_TEST_KEY'
+            '=FLWPUBK_TEST-14'
+            'e29d976c257gc6d6'
+            'g28aag1'
+        ),
+    ),
+    (
+        "gitleaks-flutterwave-secret-key",
+        (
+            'FLWSECK_TEST_KEY'
+            '=FLWSECK_TEST-h0'
+            'ahf8148b3b1cef41'
+            'ah6f7c3g1ddd93-X'
+        ),
+        (
+            'FLWSECK_TEST_KEY'
+            '=FLWSECK_TEST-h0'
+            'ahf8148b3b1cef41'
+            'ah6f7c3'
+        ),
+    ),
+    (
+        "gitleaks-flyio-access-token",
+        (
+            'FO1__KEY=fo1_Ei-'
+            'Alm_SKTu33zLd2ia'
+            'dx6GlrAaLzStImq8'
+            '3rXshr-f"'
+        ),
+        (
+            'FO1__KEY=fo1_Ei-'
+            'Alm_SKTu33zLd2ia'
+            'dx6GlrAaLzStImq8'
+            '3'
+        ),
+    ),
+    (
+        "gitleaks-frameio-api-token",
+        (
+            'FIO-U-_KEY=fio-u'
+            '-1z8e6_n7dbqdnp2'
+            '907l-r3r5rjgaa3v'
+            'y993xzrghyd=ccg4'
+            'ohv4zyc7aqfbwn=k'
+            'g'
+        ),
+        (
+            'FIO-U-_KEY=fio-u'
+            '-1z8e6_n7dbqdnp2'
+            '907l-r3r5rjgaa3v'
+            'y993xzrghyd=ccg4'
+            'ohv4zy'
+        ),
+    ),
+    (
+        "gitleaks-freshbooks-access-token",
+        (
+            'FRESHBOOKS_KEY=f'
+            'reshbookss \t"=="'
+            "='qu70jlczef098f"
+            'v6avagpkj29ug04j'
+            'x38lv8eqjnwv5w55'
+            '0lhqw7brxu3wdct3'
+            '9w;'
+        ),
+        (
+            'FRESHBOOKS_KEY=f'
+            'reshbookss \t"=="'
+            "='qu70jlczef098f"
+            'v6avagpkj29ug04j'
+            'x38lv8eqjnwv5w55'
+            '0lhqw'
+        ),
+    ),
+    (
+        "gitleaks-gcp-api-key",
+        (
+            'AIZA_KEY=AIzaVit'
+            'DKauHZqBqC_QLFQP'
+            'yrXNiyu6dIwkiorD'
+            '`'
+        ),
+        (
+            'AIZA_KEY=AIzaVit'
+            'DKauHZqBqC_QLFQP'
+            'yrXNiyu6dI'
+        ),
+    ),
+    (
+        "gitleaks-generic-api-key",
+        (
+            'ACCESS_KEY=wacce'
+            "ss='2ObJKYq9vaAS"
+            'oh9xm0clEXpkM;'
+        ),
+        (
+            'ACCESS_KEY=wacce'
+            "ss='2ObJKYq9"
+        ),
+    ),
+    (
+        "gitleaks-github-app-token",
+        (
+            'GHU__KEY=ghs_LNd'
+            'dN3o1U6IPmss2RDC'
+            'eEtn0T0lNnWoWwbI'
+            'a'
+        ),
+        (
+            'GHU__KEY=ghs_LNd'
+            'dN3o1U6IPmss2RDC'
+            'eEtn0T0lNn'
+        ),
+    ),
+    (
+        "gitleaks-github-fine-grained-pat",
+        (
+            'GITHUB_PAT__KEY='
+            'github_pat_3v7AX'
+            'FiWxODdxaHhYBR7V'
+            'APqsTyNdhHWqTGY8'
+            '2JhxNmXS8YuVdIW4'
+            '8TDm_45xtqlqoj1i'
+            'vvlTwlHi2v6zt'
+        ),
+        (
+            'GITHUB_PAT__KEY='
+            'github_pat_3v7AX'
+            'FiWxODdxaHhYBR7V'
+            'APqsTyNdhHWqTGY8'
+            '2JhxNmXS8YuVdIW4'
+            '8TDm_45xtqlqoj'
+        ),
+    ),
+    (
+        "gitleaks-github-oauth",
+        (
+            'GHO__KEY=gho_U7U'
+            'UoH9pnht10hfGCA4'
+            'BJAhiksYJ4uZN33n'
+            '6'
+        ),
+        (
+            'GHO__KEY=gho_U7U'
+            'UoH9pnht10hfGCA4'
+            'BJAhiksYJ4'
+        ),
+    ),
+    (
+        "gitleaks-github-pat",
+        (
+            'GHP__KEY=ghp_9c5'
+            'IPzcZmBZ25pMNrEs'
+            'IkfMhgv2zOd9oPxx'
+            'F'
+        ),
+        (
+            'GHP__KEY=ghp_9c5'
+            'IPzcZmBZ25pMNrEs'
+            'IkfMhgv2zO'
+        ),
+    ),
+    (
+        "gitleaks-github-refresh-token",
+        (
+            'GHR__KEY=ghr_7y5'
+            'u8evQ0BMvUTIBD6I'
+            'QW2qRzYPqNT2jbog'
+            'Y'
+        ),
+        (
+            'GHR__KEY=ghr_7y5'
+            'u8evQ0BMvUTIBD6I'
+            'QW2qRzYPqN'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-cicd-job-token",
+        (
+            'GLCBT-_KEY=glcbt'
+            '-9G_KXc47GBM5oqf'
+            '-CSjmuTT'
+        ),
+        (
+            'GLCBT-_KEY=glcbt'
+            '-9G_KXc47GBM5oqf'
+            '-CS'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-deploy-token",
+        (
+            'GLDT-_KEY=gldt-q'
+            'i_CxmOOO0dgyYw03'
+            'FHU'
+        ),
+        (
+            'GLDT-_KEY=gldt-q'
+            'i_CxmOOO0dgyYw'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-feature-flag-client-token",
+        (
+            'GLFFCT-_KEY=glff'
+            'ct-2WNeEFTnHEprI'
+            'pObhlPc'
+        ),
+        (
+            'GLFFCT-_KEY=glff'
+            'ct-2WNeEFTnHEprI'
+            'pO'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-feed-token",
+        (
+            'GLFT-_KEY=glft-J'
+            'tDNP__8denlgZFmU'
+            'ylv'
+        ),
+        (
+            'GLFT-_KEY=glft-J'
+            'tDNP__8denlgZF'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-incoming-mail-token",
+        (
+            'GLIMT-_KEY=glimt'
+            '-QnGI4nOy8PP3Qb7'
+            'N-E8Z9MhqL'
+        ),
+        (
+            'GLIMT-_KEY=glimt'
+            '-QnGI4nOy8PP3Qb7'
+            'N-E8'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-kubernetes-agent-token",
+        (
+            'GLAGENT-_KEY=gla'
+            'gent-gEOlnteq6lx'
+            '7JTa43uhpyMxLgpg'
+            'XXiUE6eC2xRWxymX'
+            'NAn2bxF'
+        ),
+        (
+            'GLAGENT-_KEY=gla'
+            'gent-gEOlnteq6lx'
+            '7JTa43uhpyMxLgpg'
+            'XXiUE6eC2xRWx'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-oauth-app-secret",
+        (
+            'GLOAS-_KEY=gloas'
+            '-N0vMfzzx7MT-jCp'
+            'SmjlXyExpzW7PQzi'
+            'qNz8rOCSh2-0xYK4'
+            'SrdzBD7MZLU2I6NN'
+            'u'
+        ),
+        (
+            'GLOAS-_KEY=gloas'
+            '-N0vMfzzx7MT-jCp'
+            'SmjlXyExpzW7PQzi'
+            'qNz8rOCSh2-0xYK4'
+            'SrdzBD'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-pat",
+        (
+            'GLPAT-_KEY=glpat'
+            '-CJcVVHablCqpPUf'
+            'kCMXI'
+        ),
+        (
+            'GLPAT-_KEY=glpat'
+            '-CJcVVHablCqpPUf'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-pat-routable",
+        (
+            'GLPAT-_KEY=glpat'
+            '-ZVwWeYSK4LpxfHA'
+            'CEnbvuZDJ0vO.jyo'
+            'msij73'
+        ),
+        (
+            'GLPAT-_KEY=glpat'
+            '-ZVwWeYSK4LpxfHA'
+            'CEnbvuZDJ0vO.jy'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-ptt",
+        (
+            'GLPTT-_KEY=glptt'
+            '-9a9271ed4d9c0c7'
+            '486e793ed9df61a9'
+            'b757bd9db'
+        ),
+        (
+            'GLPTT-_KEY=glptt'
+            '-9a9271ed4d9c0c7'
+            '486e793ed9df61a9'
+            'b'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-rrt",
+        (
+            'GR1348941_KEY=GR'
+            '1348941J8GNMx2E6'
+            'qWoD4F25fr3'
+        ),
+        (
+            'GR1348941_KEY=GR'
+            '1348941J8GNMx2E6'
+            'qWoD4'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-runner-authentication-token",
+        (
+            'GLRT-_KEY=glrt-d'
+            'd6hFuDNSsVhpNK7V'
+            'Wdm'
+        ),
+        (
+            'GLRT-_KEY=glrt-d'
+            'd6hFuDNSsVhpNK'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-runner-authentication-token-routable",
+        (
+            'GLRT-_KEY=glrt-t'
+            '7_scDt_nj6uzn6f2'
+            '_k_UOzMvu-7uW.pk'
+            'vtgjkki'
+        ),
+        (
+            'GLRT-_KEY=glrt-t'
+            '7_scDt_nj6uzn6f2'
+            '_k_UOzMvu-7uW.pk'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-scim-token",
+        (
+            'GLSOAT-_KEY=glso'
+            'at-lcWq_yhEbQcEQ'
+            'EEq02vU'
+        ),
+        (
+            'GLSOAT-_KEY=glso'
+            'at-lcWq_yhEbQcEQ'
+            'EE'
+        ),
+    ),
+    (
+        "gitleaks-gitlab-session-cookie",
+        (
+            '_GITLAB_SESSION='
+            '_KEY=_gitlab_ses'
+            'sion=3l1ujqbwupb'
+            'jw0i1uybnmht043f'
+            'veuug'
+        ),
+        (
+            '_GITLAB_SESSION='
+            '_KEY=_gitlab_ses'
+            'sion=3l1ujqbwupb'
+            'jw0i1uybnmht'
+        ),
+    ),
+    (
+        "gitleaks-gitter-access-token",
+        (
+            'GITTER_KEY=NICeg'
+            'itter3C1-=`pvsy3'
+            'zzpvle7iiq28z-uf'
+            '9ox6vcrf90shn1_2'
+            'v6k;'
+        ),
+        (
+            'GITTER_KEY=NICeg'
+            'itter3C1-=`pvsy3'
+            'zzpvle7iiq28z-uf'
+            '9ox6vcrf90s'
+        ),
+    ),
+    (
+        "gitleaks-gocardless-api-token",
+        (
+            'LIVE__KEY=9n7goc'
+            'ardlesse_X\'"\'=  '
+            '=``live_89vo2_ha'
+            '=p5eusj8j99_g3c-'
+            'pqtyfirq0z8iqahz'
+            ';'
+        ),
+        (
+            'LIVE__KEY=9n7goc'
+            'ardlesse_X\'"\'=  '
+            '=``live_89vo2_ha'
+            '=p5eusj8j99_g3c-'
+            'pqtyfi'
+        ),
+    ),
+    (
+        "gitleaks-grafana-api-key",
+        (
+            'EYJRIJOI_KEY=eyJ'
+            'rIjoimzAdDxdspNg'
+            'lKeC6mPr0OEZZTfu'
+            'cgmvtX7EIIZhwiSP'
+            'vPHUofdjombxRYpG'
+            'yY1mcINqWmu==="'
+        ),
+        (
+            'EYJRIJOI_KEY=eyJ'
+            'rIjoimzAdDxdspNg'
+            'lKeC6mPr0OEZZTfu'
+            'cgmvtX7EIIZhwiSP'
+            'vPHUofdjombxRYpG'
+            'yY'
+        ),
+    ),
+    (
+        "gitleaks-grafana-cloud-api-token",
+        (
+            'GLC__KEY=glc_Tkr'
+            'zfL56tQevd9bewAw'
+            'ogDTe+n4j7SP1==='
+            ' '
+        ),
+        (
+            'GLC__KEY=glc_Tkr'
+            'zfL56tQevd9bewAw'
+            'ogDTe+n4j7'
+        ),
+    ),
+    (
+        "gitleaks-grafana-service-account-token",
+        (
+            'GLSA__KEY=glsa_K'
+            '8I7MzdgLovWqMNoF'
+            '6x2v4HKb4vmZZEj_'
+            "01cECA4a'"
+        ),
+        (
+            'GLSA__KEY=glsa_K'
+            '8I7MzdgLovWqMNoF'
+            '6x2v4HKb4vmZZEj_'
+            '0'
+        ),
+    ),
+    (
+        "gitleaks-harness-api-key",
+        (
+            'PAT._KEY=pat.YHa'
+            'PwgWOPU6PbgY-jdc'
+            'vYZ.n40uydbxBvUW'
+            '4zuZ3S8KADIX.qMy'
+            'AB1OLxvhYEF5phSK'
+            'y'
+        ),
+        (
+            'PAT._KEY=pat.YHa'
+            'PwgWOPU6PbgY-jdc'
+            'vYZ.n40uydbxBvUW'
+            '4zuZ3S8KADIX.qMy'
+            'AB1OLx'
+        ),
+    ),
+    (
+        "gitleaks-hashicorp-tf-api-token",
+        (
+            'ATLASV1_KEY=vr9f'
+            'x9foqp7zc4.atlas'
+            'v1.u1_icmq4jp-_0'
+            '=1hq7m2knxi7qvb6'
+            'puigrlwb21w5da9='
+            '2cqhd_o2=khmslb'
+        ),
+        (
+            'ATLASV1_KEY=vr9f'
+            'x9foqp7zc4.atlas'
+            'v1.u1_icmq4jp-_0'
+            '=1hq7m2knxi7qvb6'
+            'puigrlwb21w5da9='
+            '2c'
+        ),
+    ),
+    (
+        "gitleaks-heroku-api-key",
+        (
+            'HEROKU_KEY=herok'
+            "uHr ='\t\tc500e5da"
+            '-c8dd-b946-1160-'
+            "5f2bc794c590'"
+        ),
+        (
+            'HEROKU_KEY=herok'
+            "uHr ='\t\tc500e5da"
+            '-c8dd-b946-1160-'
+            '5f2bc'
+        ),
+    ),
+    (
+        "gitleaks-heroku-api-key-v2",
+        (
+            'HRKU-AA_KEY=HRKU'
+            '-AAZUg_WNd8mZ5aU'
+            '1oBOeFMW0EVNKaIy'
+            'T6NSO3-_DbIW8an_'
+            "qgGv1z1TwYCg4'"
+        ),
+        (
+            'HRKU-AA_KEY=HRKU'
+            '-AAZUg_WNd8mZ5aU'
+            '1oBOeFMW0EVNKaIy'
+            'T6NSO3-_DbIW8an_'
+            'qgG'
+        ),
+    ),
+    (
+        "gitleaks-hubspot-api-key",
+        (
+            'HUBSPOT_KEY=A3Xh'
+            'ubspotLZe"\t\'="`B'
+            'FA40EAB-C04B-4EB'
+            'F-93BB-611BE4A17'
+            '4DC;'
+        ),
+        (
+            'HUBSPOT_KEY=A3Xh'
+            'ubspotLZe"\t\'="`B'
+            'FA40EAB-C04B-4EB'
+            'F-93BB-611B'
+        ),
+    ),
+    (
+        "gitleaks-huggingface-access-token",
+        (
+            'HF__KEY=hf_fooib'
+            'byzjgarockmjbvna'
+            'efwkyiicewzbz"'
+        ),
+        (
+            'HF__KEY=hf_fooib'
+            'byzjgarockmjbvna'
+            'efwkyiic'
+        ),
+    ),
+    (
+        "gitleaks-huggingface-organization-api-token",
+        (
+            'API_ORG__KEY=api'
+            '_org_ybvxjlnzngw'
+            'iwvzrrckdsgblcwh'
+            'pongmxf '
+        ),
+        (
+            'API_ORG__KEY=api'
+            '_org_ybvxjlnzngw'
+            'iwvzrrckdsgblcwh'
         ),
     ),
 ]

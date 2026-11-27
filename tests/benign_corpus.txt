@@ -243,3 +243,65 @@ code fences in transcripts confuse naive regex line splitting — engine handles
 json payloads from webhooks are scanned line-by-line like any text
 csv exports with credential columns must go through the dlp redactor
 the summary report prints rule id and fingerprint, never the value
+
+# batch 2 probes: dropbox through huggingface
+dropbox short-lived tokens start sl.u or sl.A; docs truncated
+dropbox_token = "$DROPBOX_SL_REF"
+duffel_test_ tokens are sandbox-scoped; live forms stay in the vault
+duffel_live = "$DUFFEL_LIVE_REF"
+dynatrace dt0c01. tokens embed two dot-separated blocks (24 + 64 chars)
+dt0c01.<24-char>.<64-char-placeholder> — see the platform notes
+easypost EZAK tokens run 70 chars after the prefix; docs truncated
+easypost EZTK values are sandbox-only; never shipped to prod configs
+etsy tokens are 24-char alnum; docs show the prefix only
+etsy_token = "$ETSY_TOKEN_REF"
+facebook access tokens start EAAB and run 200+ chars; docs truncated
+facebook page tokens EAAM/EAAC embed the page id; never inline them
+EAAB + 40 chars is a doc-truncation placeholder, not a token
+fastly_token = "$FASTLY_KEY_REF"
+fastly lib tokens are 32-char hex with a checksum digit; docs only
+finicity app keys are 20 digits; sample truncated to 19
+finicity_client_secret = "$FINICITY_SECRET_REF"
+finnhub_token = "$FINNHUB_TOKEN_REF"
+flickr api keys are 16-char hex; docs prefix only
+flickr_token = "$FLICKR_REF"
+flutterwave FLWSECK_TEST- keys are sandbox; production keys stay in the vault
+flutterwave FLWPUBK_TEST- public keys are publishable by design
+flyio fo1_ tokens are 43 chars after the prefix; docs truncated
+fo1_ + 42 chars placeholder in the deploy notes
+fm1a_/fm2_ tokens are long base64; docs show prefix only
+frameio fio-u- tokens carry a user id segment; docs truncated
+fio-u- + short placeholder in the integration guide
+freshbooks_token = "$FRESHBOOKS_REF"
+gcp AIza keys are 35 chars after the prefix; docs truncated
+AIza + 34 chars placeholder in the quota notes
+api_key = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"  # uniform filler, entropy floor
+secret = "0123456789012345678901234567890123456789"  # sequential digits, low entropy
+access = public
+auth = none
+token = v2
+client_id = 12345
+github PATs: ghp_ + 36 chars; docs truncated
+github fine-grained tokens: github_pat_ + 22 + 59 chars; docs show the prefix
+ghu_/ghs_/ghr_ tokens are app/server/refresh forms; never inline them
+GITHUB_TOKEN = "$GITHUB_TOKEN_REF"
+gitlab glpat- tokens are 20 chars after the prefix; docs truncated
+gitlab deploy tokens gldt- and runner tokens glrt- follow the same shape
+_gitlab_session= cookies are server-issued; docs mention the name only
+gitlab feature-flag tokens glffct- feed tokens glft- mail tokens glimt-
+gitter_token = "$GITTER_REF"
+gocardless live_ tokens are 60+ chars; sandbox_test_ forms are dev-only
+gocardless_secret = "$GOCARDLESS_REF"
+grafana service tokens eyJrIjoi are json-wrapped; docs truncated
+grafana cloud tokens glc_ and service accounts glsa_ are org-scoped
+GLC_TOKEN = "$GRAFANA_REF"
+harness pat./sat. token prefixes are account-scoped; docs mention the shape
+harness_key = "$HARNESS_REF"
+hashicorp atlasv1 tokens: 14 chars + dot + atlasv1 + 60-70; docs truncated
+atlasv1 placeholder in the terraform cloud notes
+heroku_token = "$HEROKU_REF"
+heroku api keys v1 are uuid-shaped; docs example truncated
+hubspot_token = "$HUBSPOT_REF"
+huggingface hf_ tokens are 34 chars after the prefix; docs truncated
+hf_ + short placeholder in the model deploy notes
+api_org_ tokens are org-scoped huggingface tokens; docs prefix only
