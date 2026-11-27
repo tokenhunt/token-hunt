@@ -19,10 +19,13 @@ jobs:
           python-version: "3.12"
       - run: pip install .
       # scan reads a single file or stdin, so feed the tracked text files as
-      # one stream (binary/exotic files excluded by pathspec — read_text-safe)
+      # one stream (binary/exotic files excluded by pathspec — read_text-safe).
+      # tests/ excluded: fixture secrets are deliberate fakes and must not
+      # produce code-scanning alerts on every run.
       - name: Run token-hunt (SARIF)
         run: >
           git ls-files -z '*.py' '*.md' '*.toml' '*.yaml' '*.yml' '*.txt' '*.cfg' '*.ini'
+          ':(exclude)tests/*'
           | xargs -0 cat
           | token-hunt scan --stdin --context CIRepoScan --format sarif --no-log
           > token-hunt.sarif
