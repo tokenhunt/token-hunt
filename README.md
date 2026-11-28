@@ -2,7 +2,7 @@
 
 > Catch secrets at chat time, not commit time.
 
-[![release](https://img.shields.io/badge/release-0.1.0-blue)](https://github.com/tokenhunt/token-hunt/releases)
+[![release](https://img.shields.io/badge/release-0.2.0-blue)](https://github.com/tokenhunt/token-hunt/releases)
 [![license](https://img.shields.io/badge/license-BUSL--1.1-green)](LICENSE)
 [![python](https://img.shields.io/badge/python-3.10+-blue)](https://www.python.org/)
 [![docs](https://img.shields.io/badge/docs-tokenhunt.dev%2Fdocs-FF5A1F)](https://tokenhunt.dev/docs)
@@ -10,7 +10,7 @@
 
 Hook-based secret scanner for **Claude Code**. Catches leaks when you paste, when your agent reads, and when your agent's tools return — not at commit time when it's already too late.
 
-_Cursor and Aider supported via the CLI peer today (manual wiring); first-class plugin integrations ship in v0.2._
+_Cursor and Aider: wire the hooks manually today (CLI peer). First-class integrations are on the roadmap, not shipped._
 
 ## Why
 
@@ -81,6 +81,35 @@ echo $GITHUB_TOKEN
 
 No other scanner detects this class.
 
+## Measured
+
+Three chat-time vectors, synthetic fixtures (fake values only), one OS, token-hunt 0.2.0 vs gitleaks 8.30.1 vs trufflehog 3.97.9:
+
+| Vector | token-hunt | gitleaks | trufflehog |
+|---|---|---|---|
+| Pasted key in chat (10 keys) | **10/10** | 9/10 | 6/10 |
+| Bash escape-hatch (7 shapes) | **7/7** | 0/7 | 0/7 |
+| `.claude/settings.local.json` (5 keys) | **5/5** | 1/5 | 3/5 |
+| 59 benign lines (false positives) | 14 — all low-confidence entropy, 0 at ≥ 0.5 | 0 | 0 |
+
+Escape-hatch runs at the `PreToolUse:Bash` detection point; the other tools return zero findings on the same file at any setting. gitleaks' paste-vector miss is a rule-shape difference (its Anthropic rule requires a trailing `AA` literal).
+
+## CI / SARIF
+
+`scan` emits SARIF 2.1.0 for GitHub code scanning:
+
+```bash
+token-hunt scan --path . --format sarif --no-log > token-hunt.sarif
+```
+
+Or use the wrapper action ([tokenhunt/token-hunt-action](https://github.com/tokenhunt/token-hunt-action)):
+
+```yaml
+- uses: tokenhunt/token-hunt-action@v0.1.0
+```
+
+SARIF runs exit 0 and never write to the rotations store — they're pipeline artifacts, not gate decisions.
+
 ## Configuration
 
 Patterns layer (later extends earlier):
@@ -148,12 +177,13 @@ token-hunt is the engine underneath: the Python package, the CLI (`scan / list /
 | sensitive-canary | Claude Code | yes | yes | no | no |
 | ggshield | Claude Code | no (cloud API) | no (fail-open) | no | no |
 | gitleaks | git + filesystem + stdin | yes | n/a | no | no |
+| trufflehog | git + filesystem + CI | partial (calls verifiers) | n/a | no | no |
 
 ## Development
 
 ```bash
 pip install -e ".[dev]"
-pytest                 # full suite (85 tests)
+pytest                 # full suite (800+ tests)
 pytest --cov=token_hunt
 ruff check .           # lint (line-length 100, target py310)
 ```
@@ -165,9 +195,10 @@ Python ≥ 3.10. Runtime deps: `click` (CLI), `platformdirs` (config paths),
 
 ```
 src/token_hunt/    engine, regex scanner, escape-hatch detector, entropy,
-                   patterns loader, allowlist, JSONL store, click CLI
+                   patterns loader, allowlist, JSONL store, click CLI, SARIF emitter
 plugin/            Claude Code plugin manifest + 6 hook shell scripts
-tests/             unit + hook wiring + e2e tests
+tests/             unit + hook wiring + e2e + per-rule fixtures + benign tripwire
+scripts/           gitleaks corpus converter + fixture generator (one-shot tooling)
 ```
 
 ## License
