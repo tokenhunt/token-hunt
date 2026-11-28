@@ -27,8 +27,8 @@ jobs:
       # || true is deliberate: signing must never fail a release; the next tag
       # retries signing on its own artifacts.
       - run: |
-          cosign sign-blob --yes --output-signature dist/*.tar.gz.sig dist/*.tar.gz || true
-          cosign sign-blob --yes --output-signature dist/*.whl.sig dist/*.whl || true
+          cosign sign-blob --yes --bundle dist/*.tar.gz.sigstore.json dist/*.tar.gz || true
+          cosign sign-blob --yes --bundle dist/*.whl.sigstore.json dist/*.whl || true
       # PyPI Trusted Publishing (below) already produces PEP 740 attestations
       # for the PyPI uploads; this signs the GitHub-release artifacts instead.
       - uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3  # v2
@@ -36,7 +36,7 @@ jobs:
           generate_release_notes: true
           files: |
             dist/*
-            dist/*.sig
+            dist/*.sigstore.json
       # Publishes via PyPI Trusted Publishing — the pending publisher on PyPI
       # must match: owner tokenhunt, repo token-hunt, workflow release.yml,
       # no environment. Version re-uploads are rejected by PyPI, so each
