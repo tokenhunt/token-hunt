@@ -130,6 +130,8 @@ TOKEN_HUNT_ALLOW=1 <command>  # one-shot bypass of BLOCK-level hooks (use sparin
 
 Providers whose keys are bare `sk-` (DeepSeek, StepFun, Moonshot, SiliconFlow, Poe, Qwen) are caught by the unattributed `sk-` rule; JWT-issued keys (MiniMax, DeepInfra scoped, Crusoe CLI) by the generic JWT rule. Providers with no publicly documented key format (SambaNova, Nebius, AI21, OVHcloud, FriendliAI, GMI Cloud, Crusoe, Featherless, DeepInfra, Inference.net, BytePlus) get **keyword-gated opaque rules**: the provider name must appear in the scanned text AND a 32+-char token must be present. Low-precision by design — the value is attribution and the rotation URL in the warn banner, not shape confidence.
 
+**Corpus:** 265 rules total — the 48 built-ins above plus 217 ported from the gitleaks MIT rule corpus (attribution: `scripts/vendor/`), including per-rule entropy gates and capture-group extraction, each with positive/negative fixtures.
+
 ## token-hunt vs pat-scanner
 
 [pat-scanner](https://github.com/tokenhunt/pat-scanner) is the one-command Claude Code plugin: one hook, 13 credential classes, regex matching. Install it and you're covered.

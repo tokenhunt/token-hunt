@@ -13,10 +13,29 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Prefixless shapes (Mistral, Cohere, Scaleway) and generic-prefix shapes (Novita, Upstage) are keyword-gated: the provider name must appear in the scanned text before the regex is tried.
 - Providers with no publicly documented key format get **keyword-gated opaque rules** (SambaNova, Nebius, AI21, OVHcloud, FriendliAI, GMI Cloud, Crusoe, Featherless, DeepInfra, Inference.net, BytePlus): provider name in text + 32+-char token. Low-precision by design — attribution + rotation URL, not shape confidence. Shape-verified rules stay provider-documented or multi-scanner-observed only; no guessed regexes.
 
-### Planned for v0.1.1
+### Planned
 - Silent redaction via `hookSpecificOutput.updatedToolOutput` for PostToolUse hooks (replaces current WARN-only behavior for Bash/Read/Write outputs)
 - Active verification mode (TruffleHog-style "is this key actually live?")
 - `--file-path` flag on `scan --stdin` to enable path-based allowlist for PostToolUse:Read
+
+## [0.2.0] — 2026-11-27
+
+### Added
+- Rule corpus 48 → 265: 217 rules ported from the gitleaks MIT corpus (attribution in `scripts/vendor/`), every rule fixture-tested; per-rule `entropy` gates and `secret_group` capture added to the rule schema.
+- `scan --format sarif` — SARIF 2.1.0 output for GitHub code scanning ingestion.
+- `hooks/pre-commit` — commit-time shim; install via `git config core.hooksPath hooks` (bash required).
+- Cosign-signed GitHub release artifacts; OpenSSF Scorecard workflow (scorecard.yml).
+- CI dogfood: the repo scans itself into GitHub code scanning on every push (rule detections only).
+
+### Changed
+- `scan` exits 1 on findings for `--format text|json` (SARIF stays exit 0 — CI artifact semantics).
+- SARIF runs never write to `rotations.log`.
+
+## [0.1.1] — 2026-11-22
+
+### Changed
+- Docs: install section refreshed; links point at the tokenhunt org.
+- CI: PyPI publishing via Trusted Publishing (OIDC) — replaces the never-configured API-token path.
 
 ## [0.1.0] — 2026-07-27
 
